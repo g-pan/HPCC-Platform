@@ -20,6 +20,7 @@
 <xsl:param name="generate.section.toc.level" select="1"/>
 <xsl:param name="generate.toc">book toc</xsl:param>
 <xsl:param name="header.column.widths" select="'0 3 0'"/>
+<xsl:param name="hyphenate">true</xsl:param>
 <xsl:param name="paper.type" select="letter"/>
 <xsl:param name="profile.condition" select="int"/>
 <xsl:param name="qanda.inherit.numeration" select="0"/>
