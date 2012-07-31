@@ -3,15 +3,14 @@
 #    dru.pl                                               #
 #   usage: run in directory of html files for drupal      #
 ###########################################################
-#  GP 2011 
 #  This program cleans html files bound for drupal        #
-#  of codes that will cause drupal errors                 #
+#    of codes that will cause drupal errors               #
 #  This program loops through all html files in a dir     #
-#  then will substitute the strings on line 37&38 s//;    #
-#  added logic to further drupalize the LINK tags s//;    #
-#  finally it will write out the modified file 1 pass     #
+#   then will substitute the strings on line 37&38 s//;   #
+#   added logic to further drupalize the LINK tags s//;   #
+#    finally it will write out the modified file 1 pass   #
 ###########################################################
-#  Copyright LN 2011 : all rights reserved       #
+#  Copyright PanageoTech 2011 : all rights reserved       #
 ###########################################################
 
 
@@ -39,8 +38,15 @@ sub process
         while ( $line = <FILE> ) {
         $line =~ s~<a name\="([^"]*)"><\/a>~~gi;
         $line =~ s~<a class\="indexterm" name\="d0e.[^"]*"><\/a>~~gi;
-#following line added for see also links for ECLR
-        $line =~ s/<a class\="link" href\="(.[^\.]*)\.html"/<a class\="link" href\="$1"/g;  
+#added for see also links for ECLR
+        if ( $line =~ m/See Also:/ )
+            { 
+            $line =~ s~_~-~g;
+            }
+
+         $line =~ s/<a class\="link" href\="(.[^\.]*)\.html"/<a class\="link" href\="$1"/g;  
+         $line =~ s/<tbody>/<tbody valign\="top">/g;  
+
 ##following lines colorize text 
          $line =~ s~<span class\="bluebold">~<span class\="bluebold" style\="color:blue\;font-weight:bold">~gi;
          $line =~ s~<span class\="blueital">~<span class\="blueital" style\="color:blue\;font-style:italic">~gi;
@@ -55,7 +61,7 @@ sub process
 	 $line =~ s~<span class\="whiteital">~<span class\="whiteital" style\="color:white\;font-style:italic">~gi;
          $line =~ s~<span class\="white">~<span class\="white" style\="color:white">~gi;
    
-   print $line;
+   #print $line;
    push(@outLines, $line);
         }
         close FILE;
