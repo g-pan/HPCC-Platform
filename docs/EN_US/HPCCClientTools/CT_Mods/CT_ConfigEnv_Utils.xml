@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book xml:base="../">
+  <bookinfo>
+    <title>ConfigMgr 2.0 Tools Overview</title>
+
+    <author>
+      <firstname>Boca Raton</firstname>
+
+      <surname>Documentation Team</surname>
+
+      <affiliation>
+        <orgname>LexisNexis Risk Solutions - HPCC Systems</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>Feb. 2019</pubdate>
+  </bookinfo>
+
+  <chapter id="Configuration_Utils">
+    <title>Configuration Utilities</title>
+
+    <sect1 id="CfgMgr2_Command_Line" role="nobrk">
+      <title>Command Line Interface</title>
+
+      <sect2 id="envchk" role="brk">
+        <title>envchk</title>
+
+        <para><emphasis role="bold">envchk &lt;options&gt;
+        environment_file</emphasis></para>
+
+        <para>The envchk utility validates an environment file and returns
+        messages of differing levels based on the severity of what is found.
+        The valid levels are informational, warning, and error. </para>
+
+        <para>Example:</para>
+
+        <programlisting>envchk -d /opt/HPCCSystems/componentfiles/configschema/xsd/ /etc/HPCCSystems/environment.xml</programlisting>
+
+        <para><informaltable colsep="1" frame="all" rowsep="1">
+            <tgroup cols="2">
+              <colspec colwidth="130.50pt" />
+
+              <colspec />
+
+              <tbody>
+                <row>
+                  <entry>envchk</entry>
+
+                  <entry>Utility that returns values for configuration
+                  aspects.</entry>
+                </row>
+
+                <row>
+                  <entry><emphasis role="bold">Arguments</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>environment_file</entry>
+
+                  <entry>The target environment file.</entry>
+                </row>
+
+                <row>
+                  <entry><emphasis role="bold">Options</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>-d, --schema-dir</entry>
+
+                  <entry>Path to schema files. Default is
+                  <emphasis>/opt/HPCCSystems/componentfiles/configschema/xsd/</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>-p, --schema-plugins-dir</entry>
+
+                  <entry>Path to plug-in files. Default is
+                  <emphasis>/opt/HPCCSystems/componentfiles/configschema/</emphasis><emphasis>xsd/plugins/</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>-m, --master-config</entry>
+
+                  <entry>Name of the master schema file. Default is
+                  <emphasis>environment.xsd</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>-l, --level</entry>
+
+                  <entry>Specifies the output level (and above) of messages
+                  emitted by the utility. The levels are e=error, w=warning,
+                  i=informational. Specifying the e level will only report
+                  errors, the w will provide warnings and errors and the i
+                  level will return all messages. </entry>
+                </row>
+
+                <row>
+                  <entry>-v, --verbose</entry>
+
+                  <entry>Specifies verbose output.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </sect2>
+    </sect1>
+  </chapter>
+</book>
