@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book xml:base="../">
+  <bookinfo>
+    <title>ConfigMgr 2.0 Tools Overview</title>
+
+    <author>
+      <firstname>Boca Raton</firstname>
+
+      <surname>Documentation Team</surname>
+
+      <affiliation>
+        <orgname>LexisNexis Risk Solutions - HPCC Systems</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>Feb. 2019</pubdate>
+  </bookinfo>
+
+  <chapter id="Configuration_Utils">
+    <title>Configuration Utilities</title>
+
+    <sect1 id="CfgMgr2_Command_Line" role="nobrk">
+      <title>Command Line Interface</title>
+
+      <sect2 id="envchk">
+        <title>ENVCHECK</title>
+
+        <para><emphasis role="bold">envchk</emphasis> &lt;options&gt;
+        environment_file</para>
+
+        <para><informaltable colsep="1" frame="all" rowsep="1">
+            <tgroup cols="2">
+              <colspec colwidth="130.50pt" />
+
+              <colspec />
+
+              <tbody>
+                <row>
+                  <entry><emphasis>-d --schema-dir
+                  &lt;path&gt;</emphasis></entry>
+
+                  <entry>path to schema files. default
+                  (/opt/HPCCSystems/componentfiles/configschema/xsd/)</entry>
+                </row>
+
+                <row>
+                  <entry><emphasis>-p --schema-plugins-dir
+                  &lt;path&gt;</emphasis></entry>
+
+                  <entry>path to plugin files, default (xsd/plugins/)</entry>
+                </row>
+
+                <row>
+                  <entry><emphasis>-m --master-config
+                  &lt;filename&gt;</emphasis></entry>
+
+                  <entry>name of master schema file, default
+                  (environment.xsd)</entry>
+                </row>
+
+                <row>
+                  <entry>-l --level &lt;level&gt;</entry>
+
+                  <entry>output level (and above), e=error, w=warning,
+                  i=informational</entry>
+                </row>
+
+                <row>
+                  <entry>-v --verbose</entry>
+
+                  <entry>verbose output</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>The envcheck utility returns specified values for
+        items relating to the environment configuration components.</para>
+
+        <para>Example:</para>
+
+        <programlisting>envchk -d /opt/HPCCSystems/componentfiles/configschema/xsd/ dali.xsd</programlisting>
+      </sect2>
+
+      <sect2 id="envchk" role="brk">
+        <title>envmod</title>
+
+        <para><emphasis role="bold">envmod &lt;options&gt;
+        &lt;environment_file&gt;</emphasis> </para>
+
+        <para>The envmod utility allows you to modify to the environment
+        configuration components with the specified options.</para>
+
+        <para>Examples: </para>
+
+        <para><programlisting>envmod -d /opt/HPCCSystems/componentfiles/configschema/xsd/ dali.xsd
+envmod -m NewEnvironment.xsd
+</programlisting></para>
+
+        <para><informaltable colsep="1" frame="all" rowsep="1">
+            <tgroup cols="2">
+              <colspec colwidth="130.50pt" />
+
+              <colspec />
+
+              <tbody>
+                <row>
+                  <entry><emphasis role="bold">Configuration
+                  Options</emphasis></entry>
+
+                  <entry></entry>
+                </row>
+
+                <row>
+                  <entry>-d, --schema-dir </entry>
+
+                  <entry>Specifies the path to schema files. Default value
+                  <emphasis>p/opt/HPCCSystems/componentfiles/configschema/xsd/</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>-p, --schema-plugins-dir</entry>
+
+                  <entry>Specifies the path to plugin files. Default value
+                  <emphasis>xsd/plugins/</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>-m, --master-config</entry>
+
+                  <entry>Specifies the name of the master schema file.
+                  Defaults to <emphasis>environment.xsd</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry><emphasis role="bold">Execution
+                  Options</emphasis></entry>
+
+                  <entry></entry>
+                </row>
+
+                <row>
+                  <entry>-t, --template </entry>
+
+                  <entry>Required file path to the modification
+                  template.</entry>
+                </row>
+
+                <row>
+                  <entry>-e, --env </entry>
+
+                  <entry>Optional file path to environment file to modify.
+                  Omit option to validate the modification template.</entry>
+                </row>
+
+                <row>
+                  <entry>--inputs</entry>
+
+                  <entry>Lists the template inputs. When specified, the
+                  template inputs are listed and the command exits.</entry>
+                </row>
+
+                <row>
+                  <entry>--input-file </entry>
+
+                  <entry>Optional full path to a file with defined inputs for
+                  the template. This would be combined with any command line
+                  inputs.</entry>
+                </row>
+
+                <row>
+                  <entry>-i, --input &lt;var=value&gt;</entry>
+
+                  <entry>Assigns the indicated value to the variable input.
+                  The input must be defined in the template value. Use a comma
+                  separated list (no blanks) for multi-value inputs. Inputs
+                  given on the command line override any in an input file
+                  (--input-file).</entry>
+                </row>
+
+                <row>
+                  <entry>-o, --output </entry>
+
+                  <entry>Optional. Specify to save as an output file. If
+                  output file path is specified, results are written to the
+                  specified file. If not specified, the input environment file
+                  is overwritten. Omit the -o option to test the modification
+                  template.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </sect2>
+    </sect1>
+  </chapter>
+</book>
