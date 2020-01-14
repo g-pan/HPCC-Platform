@@ -7,7 +7,7 @@
 
     <mediaobject>
       <imageobject>
-        <imagedata fileref="images/redswooshWithLogo3.jpg" />
+        <imagedata fileref="images/redswooshWithLogo2.jpg" />
       </imageobject>
     </mediaobject>
 
@@ -106,8 +106,8 @@
 
       <itemizedlist>
         <listitem>
-          <para>Access to an HPCC Systems Cluster (version 7.0 or later). This can be
-          one running in a Virtual Machine.</para>
+          <para>Access to an HPCC Systems Cluster (version 7.0 or later). This
+          can be one running in a Virtual Machine.</para>
         </listitem>
       </itemizedlist>
 
@@ -134,10 +134,11 @@
 
       <para><emphasis role="bold">dESDL and LDAP Security</emphasis></para>
 
-      <para>If your HPCC Systems platform is configured to use LDAP security, you must
-      ensure any user who will be publishing ESDL Definitions has Access to
-      <emphasis role="bold">ESDL configuration service</emphasis> set to
-      <emphasis role="bold">Allow Full</emphasis>, as shown below.</para>
+      <para>If your HPCC Systems platform is configured to use LDAP security,
+      you must ensure any user who will be publishing ESDL Definitions has
+      Access to <emphasis role="bold">ESDL configuration service</emphasis>
+      set to <emphasis role="bold">Allow Full</emphasis>, as shown
+      below.</para>
 
       <para><graphic fileref="images/desdl-LDAP.jpg" /></para>
 
@@ -227,7 +228,7 @@
       If you wanted to have a custom configuration that is different from this
       generic template, for instance to bind to Port 8020 that will use a
       different LDAP server, you can add another DESDL binding template on
-      port 8020. </para>
+      port 8020.</para>
 
       <orderedlist>
         <listitem>
