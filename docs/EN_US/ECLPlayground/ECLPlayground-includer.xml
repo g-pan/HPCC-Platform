@@ -7,7 +7,7 @@
 
     <mediaobject>
       <imageobject>
-        <imagedata fileref="images/redswooshWithLogo3.jpg" />
+        <imagedata fileref="images/redswooshWithLogo2.jpg" />
       </imageobject>
     </mediaobject>
 
@@ -37,7 +37,7 @@
       similarity to actual persons, living or dead, is purely
       coincidental.</para>
 
-      <para></para>
+      <para />
     </legalnotice>
 
     <xi:include href="common/Version.xml"
