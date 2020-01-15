@@ -5,12 +5,6 @@
   <bookinfo>
     <title>HPCC / Spark Integration</title>
 
-    <mediaobject>
-      <imageobject>
-        <imagedata fileref="images/redswooshWithLogo3.jpg" />
-      </imageobject>
-    </mediaobject>
-
     <author>
       <surname>Boca Raton Documentation Team</surname>
     </author>
@@ -558,7 +552,7 @@
           UNSIGNED8 values from HPCC data can cause an integer overflow in
           Java. UNSIGNED8 values are often used as unique identifiers in
           datasets, in which case overflowing would be acceptable as the
-          overflowed value will still be unique. </para>
+          overflowed value will still be unique.</para>
 
           <para>The Spark-HPCC connector allows unsigned values to overflow in
           Java and will not report a exception. The caller is responsible for
