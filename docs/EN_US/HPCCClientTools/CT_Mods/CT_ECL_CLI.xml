@@ -289,9 +289,9 @@ ecl deploy roxie - --name=FindPersonService
                 <row>
                   <entry>ecl deploy</entry>
 
-                  <entry>Creates a workunit on the HPCC Systems platform from the given
-                  ECL text, file, archive, shared object, or dll. The workunit
-                  is created in the <emphasis>compiled</emphasis>
+                  <entry>Creates a workunit on the HPCC Systems platform from
+                  the given ECL text, file, archive, shared object, or dll.
+                  The workunit is created in the <emphasis>compiled</emphasis>
                   state.</entry>
                 </row>
 
@@ -402,8 +402,8 @@ ecl deploy roxie - --name=FindPersonService
                 <row>
                   <entry>--ecl-only</entry>
 
-                  <entry>Send ECL query to HPCC Systems cluster as text rather than as a
-                  generated archive</entry>
+                  <entry>Send ECL query to HPCC Systems cluster as text rather
+                  than as a generated archive</entry>
                 </row>
 
                 <row>
@@ -727,8 +727,8 @@ ecl publish roxie ArchiveQuery.xml --name=FindPersonService --no-activate
                 <row>
                   <entry>--ecl-only</entry>
 
-                  <entry>Send ECL query to HPCC Systems cluster as text rather than as a
-                  generated archive</entry>
+                  <entry>Send ECL query to HPCC Systems cluster as text rather
+                  than as a generated archive</entry>
                 </row>
 
                 <row>
@@ -1111,8 +1111,8 @@ ecl run thor findperson.ecl -I C:\MyECL\
                 <row>
                   <entry>--ecl-only</entry>
 
-                  <entry>Send ECL query to HPCC Systems cluster as text rather than as a
-                  generated archive</entry>
+                  <entry>Send ECL query to HPCC Systems cluster as text rather
+                  than as a generated archive</entry>
                 </row>
 
                 <row>
@@ -1690,10 +1690,10 @@ ecl queries copy //192.168.1.10:8010/thor/findperson thor
                   <entry>ecl queries copy</entry>
 
                   <entry>Copies a query from one queryset to another. A query
-                  can be copied from one HPCC Systems environment to another by using
-                  a path which begins with '//' followed by the IP or hostname
-                  and Port of the source ECL Watch and then followed by the
-                  source queryset and query.</entry>
+                  can be copied from one HPCC Systems environment to another
+                  by using a path which begins with '//' followed by the IP or
+                  hostname and Port of the source ECL Watch and then followed
+                  by the source queryset and query.</entry>
                 </row>
 
                 <row>
@@ -2755,8 +2755,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl packagemap add</entry>
@@ -2903,8 +2901,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
             <tgroup cols="2">
               <colspec align="left" colwidth="175.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl packagemap delete</entry>
@@ -2997,8 +2993,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="175.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -3102,8 +3096,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
             <tgroup cols="2">
               <colspec align="left" colwidth="175.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl packagemap deactivate</entry>
@@ -3205,8 +3197,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -3311,8 +3301,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -3419,8 +3407,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="175.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -3606,8 +3592,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
             <tgroup cols="2">
               <colspec align="left" colwidth="175.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl packagemap get-part</entry>
@@ -3735,8 +3719,6 @@ ecl packagemap add roxie mypackagemap.pkg --daliip=192.168.11.11
         <informaltable colsep="1" frame="all" rowsep="1">
           <tgroup cols="2">
             <colspec align="left" colwidth="175.55pt" />
-
-            <colspec colwidth="384.85pt" />
 
             <tbody>
               <row>
@@ -3886,8 +3868,6 @@ ecl packagemap validate roxie mypackagemap.pkg --ignore-queries='findPerson*, fi
             frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="155.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -4043,8 +4023,6 @@ ecl packagemap copy //192.168.0.100:8010/roxie/MyPkg roxie2
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -4228,8 +4206,6 @@ ecl packagemap copy //192.168.0.100:8010/roxie/MyPkg roxie2
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl roxie attach</entry>
@@ -4313,8 +4289,6 @@ ecl packagemap copy //192.168.0.100:8010/roxie/MyPkg roxie2
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -4400,8 +4374,6 @@ ecl packagemap copy //192.168.0.100:8010/roxie/MyPkg roxie2
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl roxie reload</entry>
@@ -4485,8 +4457,6 @@ ecl packagemap copy //192.168.0.100:8010/roxie/MyPkg roxie2
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
@@ -4578,8 +4548,6 @@ ecl bundle depends mybundle --version=2</programlisting>
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
 
-              <colspec colwidth="384.85pt" />
-
               <tbody>
                 <row>
                   <entry>ecl bundle depends</entry>
@@ -4636,8 +4604,6 @@ ecl bundle info mybundle --version=2</programlisting>
         <para><informaltable colsep="1" frame="all" rowsep="1">
             <tgroup cols="2">
               <colspec align="left" colwidth="125.55pt" />
-
-              <colspec colwidth="384.85pt" />
 
               <tbody>
                 <row>
