@@ -5,6 +5,7 @@
 
   <xsl:import href="../docbook-xsl/fo/profile-docbook.xsl"/>
   <xsl:import href="mytitlepage.xsl"/>
+
 <xsl:param name="img.src.path">../</xsl:param>
 <xsl:param name="admon.graphics" select="1"/>
 <xsl:param name="admon.graphics.path" select="icons"/>
