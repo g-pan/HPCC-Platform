@@ -1903,6 +1903,60 @@
           <para><emphasis role="bold"> </emphasis></para>
         </sect3>
 
+        <sect3 id="CT_Bookmarks_Tab">
+          <title>Bookmarks Tab</title>
+
+          <para>The <emphasis role="bold">Bookmarks Tab</emphasis> contains
+          the following selections:</para>
+
+          <para><graphic fileref="../../images/CT060.jpg" /></para>
+
+          <informaltable colsep="1" frame="all" rowsep="1">
+            <tgroup cols="2">
+              <colspec align="left" colwidth="122.40pt" />
+
+              <colspec />
+
+              <tbody>
+                <row>
+                  <entry><graphic
+                  fileref="../../images/CT060-1.jpg" /></entry>
+
+                  <entry>Displays:the available bookmarks and allows access to
+                  <programlisting role="tab">Open__  (Opens the selected bookmark)
+Save__  (Saves the current bookmarks)
+Load__ (Loads the last saved bookmarks)
+Load Merge__ (Merges the last saved bookmarks with the current bookmarks)
+Delete__ (Deletes the selected bookmark)
+</programlisting></entry>
+                </row>
+
+                <row>
+                  <entry><graphic
+                  fileref="../../images/CT060-2.jpg" /></entry>
+
+                  <entry>Next bookmark</entry>
+                </row>
+
+                <row>
+                  <entry><graphic
+                  fileref="../../images/CT060-3.jpg" /></entry>
+
+                  <entry>previous bookmark</entry>
+                </row>
+
+                <row>
+                  <entry><emphasis role="bold">Clear</emphasis></entry>
+
+                  <entry>clears bookmarks</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+
+          <para><emphasis role="bold"> </emphasis></para>
+        </sect3>
+
         <sect3 id="CT_ECLIDE_BrowserTab">
           <title>Browser Tab</title>
 
