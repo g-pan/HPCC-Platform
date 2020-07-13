@@ -1330,7 +1330,8 @@
                   <entry><emphasis role="bold">Open</emphasis></entry>
 
                   <entry>Provides access to the following Open submenus:
-                  <programlisting role="tab"><emphasis role="bold">Open Builder:</emphasis> Opens a saved query(.ECL file) in a new ECL Builder window. CTRL+O
+                  <programlisting role="tab"><emphasis role="bold">Open Builder:</emphasis>  CTRL+O Opens a saved query (.ECL file) in 
+                       a new ECL Builder window.
 <emphasis role="bold">Open Workunit:</emphasis> opens a dialog to name the Workunit to open. 
                       Enter the Workunit ID (WUID), then press the <emphasis
                         role="bold">OK</emphasis> button.</programlisting></entry>
@@ -2939,6 +2940,19 @@ ENDMACRO;
                   <entry>Ctrl+G</entry>
 
                   <entry>Go to Line</entry>
+                </row>
+
+                <row>
+                  <entry>Alt+0</entry>
+
+                  <entry>Fold All - collapses all elements that can be
+                  collapsed</entry>
+                </row>
+
+                <row>
+                  <entry>Ctrl+Alt+0</entry>
+
+                  <entry>Unfold All - expands all collapsed elements</entry>
                 </row>
 
                 <row>
