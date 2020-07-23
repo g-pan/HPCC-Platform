@@ -35,7 +35,7 @@ set (HTML_HELP_XSL ${CMAKE_CURRENT_BINARY_DIR}/resources/docbook-xsl/htmlhelp/ht
 set (PORTAL_GEN_XSL ${CMAKE_CURRENT_BINARY_DIR}/BuildTools/PortalGen.xsl)
 
 
-
+#HACKEDUP FOR TEST G78xBR test
 if ( "${HPCC_MATURITY}" STREQUAL "release" )
 	set (DOC_VERSION "${DOC_VERSION}-${HPCC_SEQUENCE}")
 	set (DOC_VERSION_ONLY "${DOC_VERSION}")
@@ -44,7 +44,8 @@ else()
 	set (DOC_VERSION "${majorver}-${minorver}-${DOCTAG}")
         string (REGEX REPLACE "-#.*" "" DOC_VERSION_ONLY ${DOC_VERSION})
    else()
-	set (DOC_VERSION "${DOC_VERSION}-${HPCC_MATURITY}${HPCC_SEQUENCE}")
+# 78xbrTest set (DOC_VERSION "${DOC_VERSION}-${HPCC_MATURITY}${HPCC_SEQUENCE}")
+ 	set (DOC_VERSION "${DOC_VERSION}-${HPCC_MATURITY}")
 	set (DOC_VERSION_ONLY "${DOC_VERSION}")
   endif()
 endif()
