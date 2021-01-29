@@ -165,8 +165,8 @@
           <para>Client tools can be found at the HPCC Systems(C) download
           page:</para>
 
-          <para><ulink
-          url="http://hpccsystems.com/download/free-community-edition/client-tools">http://hpccsystems.com/download/free-community-edition/client-tools</ulink></para>
+          <para><olink
+          url="http://hpccsystems.com/download/free-community-edition/client-tools">http://hpccsystems.com/download/free-community-edition/client-tools</olink></para>
         </listitem>
 
         <listitem>
