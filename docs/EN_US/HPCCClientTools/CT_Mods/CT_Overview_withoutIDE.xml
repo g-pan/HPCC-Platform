@@ -101,8 +101,7 @@
 
       <orderedlist>
         <listitem>
-          <para>From the HPCC Systems<superscript>®</superscript> download
-          page, <ulink
+          <para>From the HPCC Systems(c) download page, <ulink
           url="http://hpccsystems.com/download/free-community-edition/client-tools">http://hpccsystems.com/download/free-community-edition/client-tools</ulink></para>
 
           <para>Download the appropriate Client Tools for your Operating
@@ -135,7 +134,9 @@
       the package, use:</para>
 
       <programlisting>sudo dpkg -i &lt;deb filename&gt;</programlisting>
-	  <para>After installing the package, run the following to update any dependencies:</para>
+
+      <para>After installing the package, run the following to update any
+      dependencies:</para>
 
       <programlisting>sudo apt-get install -f </programlisting>
 
@@ -162,7 +163,7 @@
           System and version.</para>
 
           <para>Client tools can be found at the HPCC
-          Systems<superscript>®</superscript> download page:</para>
+          Systems<superscript>(x)</superscript> download page:</para>
 
           <para><ulink
           url="http://hpccsystems.com/download/free-community-edition/client-tools">http://hpccsystems.com/download/free-community-edition/client-tools</ulink></para>
