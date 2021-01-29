@@ -101,8 +101,8 @@
 
       <orderedlist>
         <listitem>
-          <para>From the HPCC Systems(c) download page, <ulink
-          url="http://hpccsystems.com/download/free-community-edition/client-tools">http://hpccsystems.com/download/free-community-edition/client-tools</ulink></para>
+          <para>From the HPCC Systems(c) download page, <olink
+          url="http://hpccsystems.com/download/free-community-edition/client-tools">http://hpccsystems.com/download/free-community-edition/client-tools</olink></para>
 
           <para>Download the appropriate Client Tools for your Operating
           System. (available for RPM-Based systems, Debian-Based systems, Mac
