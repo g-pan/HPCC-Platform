@@ -147,7 +147,7 @@
       installation.</para>
     </sect2>
 
-    <sect2 id="Other_Installs">
+    <sect2 id="Other_Installs" role="brk">
       <title>Multiple Version Installations</title>
 
       <para>It is possible to install multiple versions of the client tools if
