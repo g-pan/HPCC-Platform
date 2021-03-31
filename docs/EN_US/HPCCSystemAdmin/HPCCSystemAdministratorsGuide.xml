@@ -41,7 +41,7 @@
       similarity to actual persons, living or dead, is purely
       coincidental.</para>
 
-      <para></para>
+      <para />
     </legalnotice>
 
     <xi:include href="common/Version.xml"
@@ -1557,30 +1557,67 @@ lock=/var/lock/HPCCSystems</programlisting>
           </variablelist></para>
       </sect2>
 
-      <sect2 id="ConfiguringRemoteAccessOverTLS">
-        <title>Remote Access over TLS</title>
+      <sect2 id="Security_Protocols">
+        <title>Security Protocols</title>
 
-        <para>Configuring your system for remote file access over Transport
-        Layer Security (TLS) requires modifying the <emphasis
-        role="bold">dafilesrv</emphasis> setting in the
-        <emphasis>environment.conf</emphasis> file.</para>
+        <para>Cryptographic protocols designed to provide communications
+        security. HPCC Systems utilizes secured communications
+        protocols.</para>
 
-        <para>To do this either uncomment (if they are already there), or add
-        the following lines to the <emphasis>environment.conf</emphasis> file.
-        Then set the values as appropriate for your system.</para>
+        <para>Transport Layer Security (TLS), intended as a replacement for
+        the now-deprecated Secure Sockets Layer (SSL) protocol. TLS 1.3
+        defined in August 2018, builds on the earlier SSL specifications to
+        further enhance secure communications.</para>
 
-        <para><programlisting>#enable SSL for dafilesrv remote file access
+        <sect3 id="ConfiguringRemoteAccessOverTLS">
+          <title>Remote Access over TLS</title>
+
+          <para>Configuring your system for remote file access over Transport
+          Layer Security (TLS) requires modifying the <emphasis
+          role="bold">dafilesrv</emphasis> setting in the
+          <emphasis>environment.conf</emphasis> file.</para>
+
+          <para>To do this either uncomment (if they are already there), or
+          add the following lines to the <emphasis>environment.conf</emphasis>
+          file. Then set the values as appropriate for your system.</para>
+
+          <para><programlisting>#enable SSL for dafilesrv remote file access
 dfsUseSSL=true
 dfsSSLCertFile=/certfilepath/certfile
 dfsSSLPrivateKeyFile=/keyfilepath/keyfile</programlisting>Set the <emphasis
-        role="blue">dfsUseSSL=true</emphasis> and set the value for the paths
-        to point to the certificate and key file paths on your system. Then
-        deploy the <emphasis>environment.conf</emphasis> file (and cert/key
-        files) to all nodes as appropriate.</para>
+          role="blue">dfsUseSSL=true</emphasis> and set the value for the
+          paths to point to the certificate and key file paths on your system.
+          Then deploy the <emphasis>environment.conf</emphasis> file (and
+          cert/key files) to all nodes as appropriate.</para>
 
-        <para>When dafilesrv is enabled for TLS (port 7600), it can still
-        connect over a non-TLS connection (port 7100) to allow legacy clients
-        to work.</para>
+          <para>When dafilesrv is enabled for TLS (port 7600), it can still
+          connect over a non-TLS connection (port 7100) to allow legacy
+          clients to work.</para>
+        </sect3>
+
+        <sect3>
+          <title>HPCC Web Services over TLS</title>
+
+          <para>WsClient, DfsClient, and the Spark connector require the
+          appropriate certificates in the java keystore in order to
+          communicate with HPCC web services over TLS.</para>
+
+          <para>To use SSL/TLS on an HPCC cluster any clients using the HPCC
+          Systems for Java (HPCC4J) libraries need to import the public
+          certificate used to configure the SSL/TLS for the cluster into the
+          local Java certificate keystore. One way this can be accomplished is
+          by using the keytool packaged with Java installations; Consult the
+          keytool documentation for usage on importing certificates. The
+          following is an example of importing a certificate onto a machine
+          intended to run the HPCC Systems cluster:</para>
+
+          <programlisting>sudo keytool -import -trustcacerts -cacerts -storepass changeit -noprompt -alias \
+hpccsystems -file /home/hpcc/certificate/certificate.pem</programlisting>
+
+          <para>The above is only an example, this may not work for your
+          specific installation. Consult the keytool documentation for
+          specifics on deploying in your environment.</para>
+        </sect3>
       </sect2>
     </sect1>
 
