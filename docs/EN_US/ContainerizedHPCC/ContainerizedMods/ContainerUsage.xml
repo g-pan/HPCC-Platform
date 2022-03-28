@@ -12,22 +12,22 @@
   <sect1 id="Transition_to_a-container-based-platform" role="nobrk">
     <title>Transitioning to a Container based platform</title>
 
-    <para>The transition from traditional bare metal to a container or cloud
-    based HPCC Systems platform should be fairly transparent from a users
-    perspective. Once the platform is set up, configured, and properly aligned
-    for the types of work being done on it. Much like the ECL Language it
-    should be declarative. You don't need to concern yourself with how it is
-    getting done, just go and submit what you need done and let it do it. You
-    can still reach ECL Watch, import data, load, compile, and run queries,
-    etc. very much the same way you would on the bare metal. However, there
-    have been several Frequently Asked Questions many of which originated from
-    experienced HPCC Systems or ECL Users. In light of these concerns and to
-    alleviate some of the concern you may have about transitioning to a
-    container/cloud based infrastructure, this section will look to address
-    several of these concerns.</para>
+  <para>The transition from traditional bare metal to a container or cloud
+  based HPCC Systems platform should be fairly transparent from a users
+  perspective. Once the platform is set up, configured, and properly aligned
+  for the types of work being done on it. Much like the ECL Language it should
+  be declarative. You don't need to concern yourself with how it is getting
+  done, just go and submit what you need done and let it do it. You can still
+  reach ECLWatch, import data, load, compile, and run queries, etc. very much
+  the same way you would on the bare metal. However, there have been several
+  Frequently Asked Questions many of which originated from experienced HPCC
+  Systems or ECL Users. In light of these concerns and to alleviate some of
+  the concerns you may have about transitioning to a container/cloud based
+  infrastructure, this section will look to address several of these
+  concerns.</para>
 
-    <sect2 id="GettinStarted_withHPCConACloud" role="nobrk">
-      <title>Gettng Started with HPCC Systems on a container</title>
+  <sect2 id="GettinStarted_withHPCConACloud" role="nobrk">
+    <title>Getting Started with HPCC Systems on a cloud container</title>
 
       <para>What to know before you begin:</para>
 
@@ -44,13 +44,13 @@
             <para>Your HPCC Systems username and password</para>
           </listitem>
 
-          <listitem>
-            <para>How to Access ECL Watch</para>
-          </listitem>
-        </itemizedlist> Optionally you can choose to use a tool such as the
-      ECL IDE, command line ECL, or even third party tools such as Microsoft
-      VS Code. All these should continue to work veritably the same as on bare
-      metal, just point to the appropriate HPCC Systems instance.</para>
+        <listitem>
+          <para>How to Access ECL Watch</para>
+        </listitem>
+      </itemizedlist> Optionally you can choose to use a tool such as the ECL
+    IDE, command line ECL, or even third party tools such as Microsoft VS
+    Code. All these should continue to work veritably the same as on bare
+    metal, just point to the appropriate HPCC Systems instance.</para>
 
       <para></para>
     </sect2>
