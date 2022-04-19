@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<sect1 id="Transition_to_a-container-based-platform" role="nobrk">
+  <title>Transitioning to a Container based platform</title>
+
+  <para>The transition from traditional bare metal to a container or cloud
+  based HPCC Systems platform should be fairly transparent from a users
+  perspective. Once the platform is set up, configured, and properly aligned
+  for the types of work being done on it. Much like the ECL Language it should
+  be declarative. You don't need to concern yourself with how it is getting
+  done, just go and submit what you need done and let it do it. You can still
+  reach ECL Watch, import data, load, compile, and run queries, etc. very much
+  the same way you would on the bare metal. However, there have been several
+  Frequently Asked Questions many of which originated from experienced HPCC
+  Systems or ECL Users. In light of these concerns and to alleviate some of
+  the concern you may have about transitioning to a container/cloud based
+  infrastructure, this section will look to address several of these
+  concerns.</para>
+
+  <sect2 id="GettinStarted_withHPCConACloud" role="nobrk">
+    <title>Gettng Started with HPCC Systems on a container</title>
+
+    <para>What to know before you begin:</para>
+
+    <para><itemizedlist>
+        <listitem>
+          <para>Your HPCC Systems Server IP address (or name)</para>
+        </listitem>
+
+        <listitem>
+          <para>Your HPCC Systems Dali IP address.</para>
+        </listitem>
+
+        <listitem>
+          <para>Your HPCC Systems username and password</para>
+        </listitem>
+
+        <listitem>
+          <para>How to Access ECL Watch</para>
+        </listitem>
+      </itemizedlist> Optionally you can choose to use a tool such as the ECL
+    IDE, command line ECL, or even third party tools such as Microsoft VS
+    Code. All these should continue to work veritably the same as on bare
+    metal, just point to the appropriate HPCC Systems instance.</para>
+
+    <para></para>
+  </sect2>
+
+  <sect2>
+    <title>ECL Command reference refresh</title>
+
+    <para>There is complete documentation available for the entire ECL Command
+    Line Interface. For your convenience below are a couple of the common
+    relevant ECL Command Line Interface commands.</para>
+
+    <sect3 id="FAQ-CopyPackagemap">
+      <title>Copy a packagemap</title>
+
+      <para>To Copy a packagemap:</para>
+
+      <programlisting>ecl packagemap copy &lt;component&gt; &lt;pkgname&gt; -s &lt;HPCCserverIP&gt; --daliip=&lt;daliIP&gt; -u &lt;username&gt; -pw &lt;password&gt; </programlisting>
+
+      <para>In the above example, the &lt;daliIP&gt; value is the source
+      data's Dali IP address.</para>
+    </sect3>
+
+    <sect3 id="FAQ_AddPackagemap">
+      <title>Add a packagemap</title>
+
+      <para>To Add a packagemap</para>
+
+      <programlisting>ecl Packagemap add roxie &lt;pkgname&gt; -s &lt;serverIP&gt; --daliip=&lt;daliIP&gt; -u &lt;username&gt; -pw &lt;password&gt;</programlisting>
+
+      <para>Once again, the &lt;daliIP&gt; value is the source data's Dali IP
+      address.</para>
+    </sect3>
+  </sect2>
+
+  <sect2 id="Container_FAQ">
+    <title>Cloud/Container FAQ</title>
+
+    <orderedlist>
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: How I can compile a query
+        on azure?</para>
+
+        <para><emphasis role="strong">A</emphasis>: Same way as bare metal.
+        Command line, or with the IDE, or from ECL Watch. Just point to the
+        HPCC Systems instance to compile.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: How do I copy queries from
+        an on-prem cluster to Azure?</para>
+
+        <para><emphasis role="strong">A</emphasis>: The copy query command –
+        use the Azure IP address for the target.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: How can I get the IP
+        address for the Azure target cluster?</para>
+
+        <para><emphasis role="strong">A</emphasis>: Use the "kubectl get svc"
+        command.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: How do I publish a package
+        file?</para>
+
+        <para><emphasis role="strong">A</emphasis>: Same way as bare metal.
+        Command line &gt; ecl publish &lt;parameters&gt; or use ECLWatch &gt;
+        publish</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: How do I check the
+        logs?</para>
+
+        <para><emphasis role="strong">A</emphasis>: kubectl log
+        &lt;podname&gt;</para>
+
+        <para>in addition you can use -f (follow) option to tail the logs.
+        Optionally you can also issue the &lt;namespace&gt; parameter.</para>
+
+        <para>For example:</para>
+
+        <programlisting>kbectl log roxie-agent-1-3b12a587b –namespace MyNameSpace</programlisting>
+
+        <para>Optionally, you may have implemented a log-processing solution
+        such as the Elastic Stack (elastic4hpcclogs).</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: Do we have to have use the
+        DNSName or do we need to use the IP address?</para>
+
+        <para><emphasis role="strong">A</emphasis>: If you can reach ECL Watch
+        with the DNS Name then it should also work for the command
+        line.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">Q</emphasis>: How do I get the data on
+        to Azure?</para>
+
+        <para><emphasis role="strong">A</emphasis>: Use the copy query command
+        and copy or add the Packagemap.</para>
+
+        <para>With data copy start in the logs…copy from remote location
+        specified if data doesn’t exist on the local system.</para>
+
+        <para>The remote location is the remote Dali (use the
+        --daliip=&lt;daliIP&gt; parameter to specify the remote Dali)</para>
+
+        <para>You can also use ECL Watch.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Q:</emphasis> How can I start a minimal
+        viable cloud cluster? (akin to the old Virtual Box image)?</para>
+
+        <para><emphasis role="bold">A</emphasis>: Can use Docker Desktop, or
+        Azure or any cloud provider and install the HPCC Systems Cloud native
+        helm charts</para>
+      </listitem>
+
+      <listitem>
+        <para>Q: Why my Cloud instance won't start.</para>
+
+        <para>A; Check that configuration included : 1. Install AKS, 2.the
+        appropriate git repository 3. update of helm charts 4. set credentials
+        5. storage 6. visibility settings. </para>
+      </listitem>
+    </orderedlist>
+  </sect2>
+</sect1>
