@@ -4,28 +4,27 @@
 <sect1 id="Transition_to_a-container-based-platform" role="nobrk">
   <title>Transitioning to a Container based platform</title>
 
-  <para>The transition from traditional bare metal to a container or cloud
-  based HPCC Systems platform should be fairly transparent from a users
-  perspective. Once the platform is set up, configured, and properly aligned
-  for the types of work being done on it. Much like the ECL Language it should
-  be declarative. You don't need to concern yourself with how it is getting
-  done, just go and submit what you need done and let it do it. You can still
-  reach ECL Watch, import data, load, compile, and run queries, etc. very much
-  the same way you would on the bare metal. However, there have been several
-  Frequently Asked Questions many of which originated from experienced HPCC
-  Systems or ECL Users. In light of these concerns and to alleviate some of
-  the concern you may have about transitioning to a container/cloud based
-  infrastructure, this section will look to address several of these
-  concerns.</para>
+  <para>The transition from a traditional bare metal environment to a
+  containerized or cloud based HPCC Systems platform should be fairly
+  transparent. Once the platform is set up, configured, and properly aligned
+  for the types of work being done, it should be veritably the same as a bare
+  metal installation. </para>
+
+  <para>You can still reach ECL Watch, import data, load, compile, and run
+  queries, etc. in very much the same way you would on the bare metal.
+  However, minor there are a few differences and there have been some
+  questions raised from experienced HPCC Systems or ECL Users. In light of
+  these concerns this section will look to address several of the frequently
+  asked questions.</para>
 
   <sect2 id="GettinStarted_withHPCConACloud" role="nobrk">
-    <title>Gettng Started with HPCC Systems on a container</title>
+    <title>Gettng Started with a Containerized HPCC Systems Platform</title>
 
     <para>What to know before you begin:</para>
 
     <para><itemizedlist>
         <listitem>
-          <para>Your HPCC Systems Server IP address (or name)</para>
+          <para>Your HPCC Systems Server's IP address (or name)</para>
         </listitem>
 
         <listitem>
@@ -39,16 +38,16 @@
         <listitem>
           <para>How to Access ECL Watch</para>
         </listitem>
-      </itemizedlist> Optionally you can choose to use a tool such as the ECL
-    IDE, command line ECL, or even third party tools such as Microsoft VS
-    Code. All these should continue to work veritably the same as on bare
-    metal, just point to the appropriate HPCC Systems instance.</para>
+      </itemizedlist>You can choose to use a tool such as the ECL IDE, command
+    line ECL, or third-party tools such as Microsoft VS Code. All these should
+    work the same as they do with a bare-metal deployment--just point to the
+    appropriate instance.</para>
 
     <para></para>
   </sect2>
 
-  <sect2>
-    <title>ECL Command reference refresh</title>
+  <sect2 id="CommonECLCommands">
+    <title>Common ECL Commands</title>
 
     <para>There is complete documentation available for the entire ECL Command
     Line Interface. For your convenience below are a couple of the common
@@ -77,17 +76,21 @@
     </sect3>
   </sect2>
 
-  <sect2 id="Container_FAQ">
+  <sect2 id="Container_FAQ" role="brk">
     <title>Cloud/Container FAQ</title>
 
     <orderedlist>
       <listitem>
         <para><emphasis role="strong">Q</emphasis>: How I can compile a query
-        on azure?</para>
+        on a containerized or cloud-based system?</para>
 
         <para><emphasis role="strong">A</emphasis>: Same way as bare metal.
         Command line, or with the IDE, or from ECL Watch. Just point to the
         HPCC Systems instance to compile.</para>
+
+        <para>For Example: </para>
+
+        <programlisting></programlisting>
       </listitem>
 
       <listitem>
@@ -96,6 +99,10 @@
 
         <para><emphasis role="strong">A</emphasis>: The copy query command –
         use the Azure IP address for the target.</para>
+
+        <para>For example: </para>
+
+        <programlisting></programlisting>
       </listitem>
 
       <listitem>
@@ -103,7 +110,9 @@
         address for the Azure target cluster?</para>
 
         <para><emphasis role="strong">A</emphasis>: Use the "kubectl get svc"
-        command.</para>
+        command. Use the external IP address listed for ECL Watch. </para>
+
+        <para><programlisting>kubectl get svc</programlisting></para>
       </listitem>
 
       <listitem>
@@ -165,14 +174,6 @@
         <para><emphasis role="bold">A</emphasis>: Can use Docker Desktop, or
         Azure or any cloud provider and install the HPCC Systems Cloud native
         helm charts</para>
-      </listitem>
-
-      <listitem>
-        <para>Q: Why my Cloud instance won't start.</para>
-
-        <para>A; Check that configuration included : 1. Install AKS, 2.the
-        appropriate git repository 3. update of helm charts 4. set credentials
-        5. storage 6. visibility settings. </para>
       </listitem>
     </orderedlist>
   </sect2>
