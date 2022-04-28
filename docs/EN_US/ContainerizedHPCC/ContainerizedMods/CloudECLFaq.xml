@@ -8,7 +8,7 @@
   containerized or cloud based HPCC Systems platform should be fairly
   transparent. Once the platform is set up, configured, and properly aligned
   for the types of work being done, it should be veritably the same as a bare
-  metal installation. </para>
+  metal installation.</para>
 
   <para>You can still reach ECL Watch, import data, load, compile, and run
   queries, etc. in very much the same way you would on the bare metal.
@@ -24,11 +24,13 @@
 
     <para><itemizedlist>
         <listitem>
-          <para>Your HPCC Systems Server's IP address (or name)</para>
+          <para>Your HPCC Systems Server IP address or Fully Qaulified Doman
+          Name</para>
         </listitem>
 
         <listitem>
-          <para>Your HPCC Systems Dali IP address.</para>
+          <para>Your HPCC Systems Dali IP address or Fully Qaulified Doman
+          Name</para>
         </listitem>
 
         <listitem>
@@ -42,8 +44,6 @@
     line ECL, or third-party tools such as Microsoft VS Code. All these should
     work the same as they do with a bare-metal deployment--just point to the
     appropriate instance.</para>
-
-    <para></para>
   </sect2>
 
   <sect2 id="CommonECLCommands">
@@ -74,6 +74,14 @@
       <para>Once again, the &lt;daliIP&gt; value is the source data's Dali IP
       address.</para>
     </sect3>
+
+    <sect3>
+      <title>DFU Plus</title>
+
+      <para>Using DFUPlus to spray and despray </para>
+
+      <para>parameters for cloud srcplane and dstplane??</para>
+    </sect3>
   </sect2>
 
   <sect2 id="Container_FAQ" role="brk">
@@ -88,7 +96,7 @@
         Command line, or with the IDE, or from ECL Watch. Just point to the
         HPCC Systems instance to compile.</para>
 
-        <para>For Example: </para>
+        <para>For Example:</para>
 
         <programlisting></programlisting>
       </listitem>
@@ -100,7 +108,7 @@
         <para><emphasis role="strong">A</emphasis>: The copy query command –
         use the Azure IP address for the target.</para>
 
-        <para>For example: </para>
+        <para>For example:</para>
 
         <programlisting></programlisting>
       </listitem>
@@ -110,7 +118,7 @@
         address for the Azure target cluster?</para>
 
         <para><emphasis role="strong">A</emphasis>: Use the "kubectl get svc"
-        command. Use the external IP address listed for ECL Watch. </para>
+        command. Use the external IP address listed for ECL Watch.</para>
 
         <para><programlisting>kubectl get svc</programlisting></para>
       </listitem>
@@ -122,6 +130,8 @@
         <para><emphasis role="strong">A</emphasis>: Same way as bare metal.
         Command line &gt; ecl publish &lt;parameters&gt; or use ECLWatch &gt;
         publish</para>
+
+        <programlisting></programlisting>
       </listitem>
 
       <listitem>
@@ -168,12 +178,33 @@
       </listitem>
 
       <listitem>
-        <para><emphasis role="bold">Q:</emphasis> How can I start a minimal
-        viable cloud cluster? (akin to the old Virtual Box image)?</para>
+        <para><emphasis role="bold">Q:</emphasis> How can I start a cloud
+        cluster? (akin to the old Virtual Box image)?</para>
 
         <para><emphasis role="bold">A</emphasis>: Can use Docker Desktop, or
         Azure or any cloud provider and install the HPCC Systems Cloud native
         helm charts</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Q:</emphasis> How can I check for running
+        queries?</para>
+
+        <para><emphasis role="bold">A</emphasis>: There is a new method
+        available (for queries)
+        http://[eclwatch]:8010/WsResources/ServiceQuery?ver_=1.01&amp;</para>
+
+        <para>For example Roxie Queries: </para>
+
+        <programlisting>http://[eclwatch]:8010/WsResources/ServiceQuery?ver_=1.01&amp;Type=roxie</programlisting>
+
+        <para>or WsECL (eclqueries)</para>
+
+        <programlisting>http://[eclwatch]:8010/WsResources/ServiceQuery?ver_=1.01&amp;Type=eclqueries</programlisting>
+
+        <para>ECL queries that are published to a given Roxie:</para>
+
+        <programlisting>http://[eclwatch]:8010/WsWorkunits/WUListQueries.json?ver_=1.86&amp;ClusterName=roxie&amp;CheckAllNodes=0 </programlisting>
       </listitem>
     </orderedlist>
   </sect2>
