@@ -7,15 +7,16 @@
   <para>The transition from a traditional bare metal environment to a
   containerized or cloud based HPCC Systems platform should be fairly
   transparent. Once the platform is set up, configured, and properly aligned
-  for the types of work being done, it should be veritably the same as a bare
-  metal installation.</para>
+  for the types of work being done on it, it should be veritably the same as a
+  bare metal installation.</para>
 
-  <para>You can still reach ECL Watch, import data, load, compile, and run
-  queries, etc. in very much the same way you would on the bare metal.
-  However, minor there are a few differences and there have been some
-  questions raised from experienced HPCC Systems or ECL Users. In light of
-  these concerns this section will look to address several of the frequently
-  asked questions.</para>
+  <para>You can still reach ECL Watch, import data, load and extract, compile
+  and run queries, etc. in very much the same way you would on bare metal.
+  However, there are a few minor differences and there can be some questions
+  about working in a new paradigm. Even experienced HPCC Systems developers
+  and ECL Users can have some hesitations. In light of these concerns this
+  section will look to address some of the more frequently asked
+  questions.</para>
 
   <sect2 id="GettinStarted_withHPCConACloud" role="nobrk">
     <title>Gettng Started with a Containerized HPCC Systems Platform</title>
@@ -24,26 +25,40 @@
 
     <para><itemizedlist>
         <listitem>
-          <para>Your HPCC Systems Server IP address or Fully Qaulified Doman
-          Name</para>
+          <para>Your HPCC Systems ECL Watch server Hostname or IP
+          address</para>
         </listitem>
 
         <listitem>
-          <para>Your HPCC Systems Dali IP address or Fully Qaulified Doman
-          Name</para>
+          <para>Your HPCC Systems Dali Hostname or IP address</para>
         </listitem>
 
         <listitem>
-          <para>Your HPCC Systems username and password</para>
+          <para>Your HPCC Systems Username and password</para>
         </listitem>
 
         <listitem>
           <para>How to Access ECL Watch</para>
         </listitem>
-      </itemizedlist>You can choose to use a tool such as the ECL IDE, command
-    line ECL, or third-party tools such as Microsoft VS Code. All these should
-    work the same as they do with a bare-metal deployment--just point to the
-    appropriate instance.</para>
+
+        <listitem>
+          <para>Using a Client Interface</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para>You can choose to use a tool such as the ECL IDE, command line ECL,
+    or third-party tools such as Microsoft VS Code for your Client Interface.
+    All these should work the same as they do with a bare-metal
+    deployment--just point to the appropriate service instance.</para>
+
+    <para>One of differences in the architecture, where in bare metal services
+    were bound to physical hardware, in the cloud think each of the services
+    running on their own virtual hardware space. Where several services may
+    have shared a physical IP address, in the cloud these can be separate. ECL
+    Watch can have its own IP address and a Web Service could be on another.
+    In fact since those IP addresses can change, you would be much better off
+    using Fully Qualified Domain Names (FQDN) or hostnames instead of the IP
+    Address. </para>
   </sect2>
 
   <sect2 id="CommonECLCommands">
@@ -58,10 +73,10 @@
 
       <para>To Copy a packagemap:</para>
 
-      <programlisting>ecl packagemap copy &lt;component&gt; &lt;pkgname&gt; -s &lt;HPCCserverIP&gt; --daliip=&lt;daliIP&gt; -u &lt;username&gt; -pw &lt;password&gt; </programlisting>
+      <programlisting>ecl packagemap copy &lt;component&gt; &lt;pkgname&gt; -s &lt;HPCC_Host&gt; --daliip=&lt;dali_Host&gt; -u &lt;usrnme&gt; -pw &lt;passwd&gt; </programlisting>
 
-      <para>In the above example, the &lt;daliIP&gt; value is the source
-      data's Dali IP address.</para>
+      <para>In the above example, the --daliip=&lt;dali_Host&gt; value is the
+      source data's Dali IP address or hostname.</para>
     </sect3>
 
     <sect3 id="FAQ_AddPackagemap">
@@ -69,16 +84,16 @@
 
       <para>To Add a packagemap</para>
 
-      <programlisting>ecl Packagemap add roxie &lt;pkgname&gt; -s &lt;serverIP&gt; --daliip=&lt;daliIP&gt; -u &lt;username&gt; -pw &lt;password&gt;</programlisting>
+      <programlisting>ecl Packagemap add roxie &lt;pkgname&gt; -s &lt;HPCC_Host&gt; --daliip=&lt;dali_Host&gt; -u &lt;usrnme&gt; -pw &lt;passwd&gt;</programlisting>
 
-      <para>Once again, the &lt;daliIP&gt; value is the source data's Dali IP
-      address.</para>
+      <para>Once again, the --daliip=&lt;dali_Host&gt; value is the source
+      data's Dali IP or hostname.</para>
     </sect3>
 
     <sect3>
       <title>DFU Plus</title>
 
-      <para>Using DFUPlus to spray and despray </para>
+      <para>Using DFUPlus to spray and despray</para>
 
       <para>parameters for cloud srcplane and dstplane??</para>
     </sect3>
@@ -98,7 +113,7 @@
 
         <para>For Example:</para>
 
-        <programlisting></programlisting>
+        <programlisting>ecl deploy &lt;target&gt; &lt;file&gt;</programlisting>
       </listitem>
 
       <listitem>
@@ -106,11 +121,11 @@
         an on-prem cluster to Azure?</para>
 
         <para><emphasis role="strong">A</emphasis>: The copy query command –
-        use the Azure IP address for the target.</para>
+        use the Azure host name or IP address for the target.</para>
 
         <para>For example:</para>
 
-        <programlisting></programlisting>
+        <programlisting>ecl queries copy &lt;source_query_path&gt; &lt;target_queryset&gt;</programlisting>
       </listitem>
 
       <listitem>
@@ -118,7 +133,7 @@
         address for the Azure target cluster?</para>
 
         <para><emphasis role="strong">A</emphasis>: Use the "kubectl get svc"
-        command. Use the external IP address listed for ECL Watch.</para>
+        command. Use the external IP address listed for ECL Watch. </para>
 
         <para><programlisting>kubectl get svc</programlisting></para>
       </listitem>
@@ -131,7 +146,9 @@
         Command line &gt; ecl publish &lt;parameters&gt; or use ECLWatch &gt;
         publish</para>
 
-        <programlisting></programlisting>
+        <para>For example to publish findperson.ecl to Roxie: </para>
+
+        <programlisting>ecl publish roxie findperson.ecl --name=FindPersonService -A</programlisting>
       </listitem>
 
       <listitem>
@@ -187,24 +204,34 @@
       </listitem>
 
       <listitem>
-        <para><emphasis role="bold">Q:</emphasis> How can I check for running
-        queries?</para>
+        <para><emphasis role="bold">Q:</emphasis> How can I show the ECL
+        queries that are published to a given Roxie?</para>
 
-        <para><emphasis role="bold">A</emphasis>: There is a new method
-        available (for queries)
+        <para><emphasis role="bold">A</emphasis>: Can use WUListQueries
+        </para>
+
+        <para>For example:</para>
+
+        <programlisting>http://[eclwatch]:8010/WsWorkunits/WUListQueries.json?ver_=1.86&amp;ClusterName=roxie&amp;CheckAllNodes=0</programlisting>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Q:</emphasis> Are there any new methods
+        available to work with queries?</para>
+
+        <para><emphasis role="bold">A</emphasis>: Yes. There is a new method
+        available ServiceQuery. </para>
+
+        <para>
         http://[eclwatch]:8010/WsResources/ServiceQuery?ver_=1.01&amp;</para>
 
-        <para>For example Roxie Queries: </para>
+        <para>For example Roxie Queries:</para>
 
         <programlisting>http://[eclwatch]:8010/WsResources/ServiceQuery?ver_=1.01&amp;Type=roxie</programlisting>
 
         <para>or WsECL (eclqueries)</para>
 
         <programlisting>http://[eclwatch]:8010/WsResources/ServiceQuery?ver_=1.01&amp;Type=eclqueries</programlisting>
-
-        <para>ECL queries that are published to a given Roxie:</para>
-
-        <programlisting>http://[eclwatch]:8010/WsWorkunits/WUListQueries.json?ver_=1.86&amp;ClusterName=roxie&amp;CheckAllNodes=0 </programlisting>
       </listitem>
     </orderedlist>
   </sect2>
