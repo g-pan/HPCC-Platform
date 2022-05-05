@@ -97,7 +97,7 @@
 
       <programlisting>dfuplus action=spray srcip=&lt;srcfile&gt; dstcluster=&lt;mythor&gt; format=csv</programlisting>
 
-      <para>For example, to spray a file to a cloud landing zone: </para>
+      <para>For example, to spray a file to a cloud landing zone:</para>
 
       <para><programlisting>Perhaps Krishna can provide an example??</programlisting>***</para>
     </sect3>
@@ -214,6 +214,18 @@
         <para><emphasis role="bold">A</emphasis>: Can use Docker Desktop, or
         Azure or any cloud provider and install the HPCC Systems Cloud native
         helm charts</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Q:</emphasis> How can I execute a command
+        in a specific pod?</para>
+
+        <para><emphasis role="bold">A</emphasis>: use the kubectl exec
+        &lt;pod&gt; -- command </para>
+
+        <para>For example:</para>
+
+        <programlisting>kubectl exec myeclccserver-69d5cd4876-znf2g  -it -- /bin/sh</programlisting>
       </listitem>
 
       <listitem>
