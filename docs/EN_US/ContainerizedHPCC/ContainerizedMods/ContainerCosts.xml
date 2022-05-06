@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter id="CHAPTER_TEMPLATE">
+  <title>DocBook Chapter Template</title>
+
+  <para>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
+  tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+  aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate
+  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat
+  cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id
+  est laborum.</para>
+
+  <sect1 id="Cost_Information">
+    <title>Cost Information</title>
+
+    <para>With the advent of the cloud native HPCC Systems platform, we have
+    introduced cost information. Currently there are three types of costs that
+    are tracked.</para>
+
+    <orderedlist>
+      <listitem>
+         Execution Cost 
+      </listitem>
+
+      <listitem>
+         Storage Cost 
+      </listitem>
+
+      <listitem>
+         File Access Cost 
+      </listitem>
+    </orderedlist>
+
+    <para>Let's take a more in-depth look into these types of costs and how to
+    manage them.</para>
+
+    <sect2>
+      <title>Execution CostID=ExecutionCost</title>
+
+      <para>Execution Cost is the cost of executing the workunit, graph and
+      subgraphs on the Thor cluster. It includes the cost of all the nodes
+      directly required to execute the job and includes the cost of:</para>
+
+      <orderedlist>
+        <listitem>Worker nodes</listitem>
+
+        <listitem>Compiler nodes</listitem>
+
+        <listitem>Agent nodes and the manager node</listitem>
+      </orderedlist>
+
+      <para>A workunit’s execution cost value is displayed in its summary page
+      and is broken down at the graph, subgraph and activity level. The graph
+      and subgraph cost values are available in the metrics and graph
+      viewer.</para>
+
+      <para><emphasis role="bold">Note:</emphasis> The execution cost of ROXIE
+      workunits is not currently implemented.</para>
+
+      <para>Two new columns have been added to the Workunit’s table in ECL
+      Watch to show the cost values related to workunits, which may be sorted
+      by either cost column to find the most expensive jobs.</para>
+
+      <!--ADD-IMAGE-->
+
+      <para>The costs are also shown on the Workunits summary page in ECL
+      Watch:</para>
+
+      <img alt="Image highlighting the cost savings section in the new ECL Watch"
+           class="align-center" data-entity-type="file"
+           data-entity-uuid="8a5909ee-2c69-460f-a9d8-01ae57ad286b"
+           src="/sites/default/files/inline-images/Shamser%20image%202%20final_3.png"
+           width="800" />
+
+      <para />
+
+      <para>Job Guillotine</para>
+
+      <para>The risk of runaway costs is a concern with uncapped usage-based
+      charging. The job guillotine feature has been provided to manage this
+      risk by setting a limit on the costs that a job may incur.</para>
+
+      <para><emphasis role="bold">Note: </emphasis>This feature is supported
+      for Thor jobs only.</para>
+
+      <img alt="Image highlighting the cost savings section in the new ECL Watch"
+           class="align-center" data-entity-type="file"
+           data-entity-uuid="12054c09-17d4-485c-9e86-704d4c536847"
+           src="/sites/default/files/inline-images/Shamser%20image%203%20final_3.png"
+           width="800" />
+    </sect2>
+
+    <sect2>
+      <title>Storage Cost</title>
+
+      <para></para>
+
+      <para>This is the cost of hosting the data in the storage plane. It does
+      not include the cost of data operation such as read or write costs.
+      <emphasis role="bold">Note:</emphasis> No costs are recorded for
+      temporary or spill files, because the local storage is included in the
+      price of the VM used to calculate the execution costs.</para>
+
+      <para>At present, the storage costs cannot be viewed as a separate value
+      in ECL Watch. They can only be viewed as part of a cost field in a
+      logical file’s summary page. The cost field includes other file related
+      costs.</para>
+    </sect2>
+
+    <sect2>
+      <title>File Access Cost</title>
+
+      <para />
+
+      <para>Many storage planes have a separate charge for data operations.
+      The cost of reading and writing to the file will be included in the file
+      access cost value. Any other cost associated with operations (such as
+      delete or copy) will not be tracked or included as part of file access
+      cost at this time.</para>
+
+      <para>The file access cost is currently shown as part of the cost field
+      in the Logical File’s summary page in ECL Watch. But planned
+      improvements for future versions include the replacement of the cost
+      field with two new fields showing the at rest cost and the file access
+      cost as separate values.</para>
+
+      <para>The costs incurred by a workunit for accessing logical files is
+      also recorded in the workunit’s statistics and attributes. The
+      read/write cost is recorded at the activity record and cumulated at the
+      graph, the subgraph and the workflow scope level. The total file access
+      cost for a workunit is recorded with the workunit and displayed in the
+      summary page.</para>
+
+      <para><br /> The Logical Files table in ECL Watch has been updated to
+      show the costs incurred for storing and accessing logical files:</para>
+
+      <img alt="Image highlighting the cost savings section in the new ECL Watch"
+           class="align-center" data-entity-type="file"
+           data-entity-uuid="abee6e18-f278-48be-b722-d3bf8d2d2838"
+           src="/sites/default/files/inline-images/Shamser%20image%204%20final_2.png"
+           width="800" />
+
+      <para />
+
+      <para>The new cost field is shown in the Logical File summary page. It
+      is the combined cost of storing and accessing the data.</para>
+
+      <para><emphasis role="bold">Note:</emphasis>This new cost field is
+      likely to be replaced by two new fields to show at rest cost and access
+      costs separately.</para>
+
+      <img alt="Image highlighting the cost savings section in the new ECL Watch"
+           class="align-center" data-entity-type="file"
+           data-entity-uuid="4466c9c6-0289-4800-adbe-bfa159a9c655"
+           src="/sites/default/files/inline-images/Shamser%20image%205%20final_2.png"
+           width="800" />
+
+      <para />
+
+      <para>The cost information is currently only generated for Thor and
+      hThor jobs.</para>
+    </sect2>
+
+    <sect2>
+      <title>Caveats</title>
+
+      <para>All the cost values calculated are approximate. They are intended
+      be used only as a guide. Inaccuracies may result from any of the
+      following:</para>
+
+      <orderedlist>
+        <listitem>
+           Not tracking file access from outside the HPCC Systems platform 
+        </listitem>
+
+        <listitem>
+           Not tracking file operations other than read/write operations 
+        </listitem>
+
+        <listitem>
+           Caching by NFS or OS 
+        </listitem>
+
+        <listitem>
+           Under-utilized nodes 
+        </listitem>
+
+        <listitem>
+           Resources shared between jobs – for example, re-use of a compiler node 
+        </listitem>
+
+        <listitem>
+           Any other unknowns 
+        </listitem>
+      </orderedlist>
+    </sect2>
+  </sect1>
+
+  <sect1>
+    <title>Costs Configuration</title>
+
+    <para>This section details setting the costs configuration
+    parameters.</para>
+
+    <para>The configuration provides the pricing information and currency
+    formatting information. The following configuration parameters are
+    supported:</para>
+
+    <orderedlist>
+      <listitem>
+         currencyCode - Used for currency formatting of cost values 
+      </listitem>
+
+      <listitem>
+         perCpu - Cost per hour of a single cpu 
+      </listitem>
+
+      <listitem>
+         storageAtRest - Storage cost per gigabyte per month 
+      </listitem>
+
+      <listitem>
+         storageReads - Cost per 10,000 read operations 
+      </listitem>
+
+      <listitem>
+         storageWrites - Cost per 10,000 write operations 
+      </listitem>
+    </orderedlist>
+
+    <sect2>
+      <title>Helm configuration</title>
+
+      <para></para>
+
+      <para>The default values.yaml configuration file is configured with the
+      following cost parameters in the global/cost section:</para>
+
+      <programlisting>  cost:
+    currencyCode: USD
+    perCpu: 0.126
+    storageAtRest: 0.0135
+    storageReads: 0.0485
+    storageWrites: 0.0038
+</programlisting>
+
+      <para>The <emphasis role="bold">currencyCode</emphasis> attribute should
+      be configured with the ISO 4217 country code. (The platform defaults to
+      USD if the currency code is missing).<br /> The <emphasis
+      role="bold">perCpu</emphasis> from the global/cost section applies to
+      every component that has not been configured with its own perCpu value.
+      A perCpu value specific to a component may be set by adding a
+      cost/perCPU attribute under that component section:</para>
+
+      <programlisting>  dali:
+    - name: mydali
+      cost:
+        perCpu: 0.24</programlisting>
+
+      <para>The Thor components support additional cost parameters which are
+      used for the job guillotine feature:</para>
+
+      <orderedlist>
+        <listitem>
+          <emphasis role="bold">limit attribute</emphasis>
+
+          <br />
+
+           Sets the “soft” cost limit that a workunit may incur. The limit is “soft” in that it may be overridden by the 
+
+          <emphasis role="bold">maxCost</emphasis>
+
+           ECL option. A node will be terminated if it exceeds its 
+
+          <emphasis role="bold">maxCost</emphasis>
+
+           value (if set) or the limit attribute value (if the 
+
+          <emphasis role="bold">maxCost</emphasis>
+
+           not set).
+        </listitem>
+
+        <listitem>
+          <emphasis role="bold">hardlimit attribute</emphasis>
+
+          <br />
+
+           Sets the absolute maximum cost limit, a limit that may not be overridden by setting the ECL option. The 
+
+          <emphasis role="bold">maxCost</emphasis>
+
+           value exceeding the hardlimit will be ignored.
+        </listitem>
+      </orderedlist>
+
+      <programlisting>thor:
+- name: thor
+  prefix: thor
+  numWorkers: 2
+  maxJobs: 4
+  maxGraphs: 2
+  cost:
+    limit: 10.00      # maximum cost is $10, overridable with maxCost option
+    hardlimit: 20.00  # maximum cost is $20, cannot be overridden</programlisting>
+
+      <para>The storage cost parameters (<emphasis
+      role="bold">storageAtRest</emphasis>, <emphasis
+      role="bold">storageReads</emphasis> and <emphasis
+      role="bold">storageWrites</emphasis>) may be added under the storage
+      plane cost section to set cost parameters specific to the storage
+      plane:</para>
+
+      <programlisting>storage:
+  planes:
+  - name: dali
+    storageClass: ""
+    storageSize: 1Gi
+    prefix: "/var/lib/HPCCSystems/dalistorage"
+    pvc: mycluster-hpcc-dalistorage-pvc
+    category: dali
+    cost:
+      storageAtRest: 0.01
+      storageReads: 0.001
+      storageWrites: 0.04
+</programlisting>
+
+      <para>The storage cost parameters under the global section are only used
+      if no cost parameters are specified on the storage plane.</para>
+
+      <para>Setting Configuration Parameters for the HPCC Systems Bare Metal
+      Platform</para>
+
+      <para>The cost configuration may only be configured by editing the
+      environment.xml (usually located in /etc/HPCCSystems). The cost
+      parameters are not supported by and may not be amended using the
+      configenv interface.</para>
+
+      <para><br /> The cost parameters are provided as attributes in the
+      “cost” child element located under the /Environment/Hardware section as
+      shown in this example extract of an environment.xml file :</para>
+
+      <programlisting>&lt;Environment&gt;
+ &lt;Hardware&gt;
+  &lt;ComputerType …
+  &lt;Domain …
+  &lt;Computer …
+  &lt;Switch …
+  &lt;cost currencyCode="USD"
+        perCpu="0.113"
+        storageAtRest="0.0135"
+        storageReads="0.0485"
+        storageWrites="0.0038"/&gt;
+ &lt;/Harware&gt;</programlisting>
+
+      <para>More New Features and Improvements Coming Soon</para>
+
+      <para>There are significant opportunities for the HPCC Systems platform
+      to help developers, managers and DevOps in managing costs in the cloud.
+      The following new features are expected to be added during 2022:</para>
+
+      <orderedlist>
+        <listitem>
+          Cost information from Roxie
+        </listitem>
+
+        <listitem>
+          Include the cost of spraying/despraying
+        </listitem>
+
+        <listitem>
+          Historic file costs
+        </listitem>
+
+        <listitem>
+          Support for cost tracking when using Azure hpc-cache
+        </listitem>
+
+        <listitem>
+          Track the costs of compilation
+        </listitem>
+
+        <listitem>
+          Report DALI storage costs
+        </listitem>
+
+        <listitem>
+          Track costs from deleted work units
+        </listitem>
+
+        <listitem>
+          Track costs from deleted files
+        </listitem>
+
+        <listitem>
+          Accumulated cost by user
+        </listitem>
+      </orderedlist>
+
+      <para>Cost calculation in HPCC Systems will evolve and improve to more
+      closely reflect the actual costs incurred and reporting the cost
+      information in a form that is useful and accessible to users is high
+      priority. So, expect the presentation and reporting of the cost
+      information to improve as more progress is made on this ongoing
+      development project.</para>
+    </sect2>
+  </sect1>
+</chapter>
