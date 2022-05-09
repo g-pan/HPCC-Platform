@@ -66,8 +66,8 @@
       workunits is not currently implemented.</para>
 
       <para>Two new columns have been added to the Workunit’s table in ECL
-      Watch to show the cost values related to workunits, which may be sorted
-      by either cost column to find the most expensive jobs.</para>
+      Watch to show the cost values related to workunits. These can be sorted
+      by either cost column.</para>
 
       <!--ADD-IMAGE-->
 
@@ -76,26 +76,28 @@
 
       <!--ADD-IMAGE-->
 
-      <para>Job Guillotine</para>
+      <sect3>
+        <title>Job Guillotine</title>
 
-      <para>The risk of runaway costs is a concern with uncapped usage-based
-      charging. The job guillotine feature has been provided to manage this
-      risk by setting a limit on the costs that a job may incur.</para>
+        <para>The risk of runaway costs is a concern with uncapped usage-based
+        charging. The job guillotine feature has been provided to manage this
+        risk by setting a limit on the costs that a job may incur.</para>
 
-      <para><emphasis role="bold">Note: </emphasis>This feature is supported
-      for Thor jobs only.</para>
+        <para><emphasis role="bold">Note: </emphasis>This feature is supported
+        for Thor jobs only.</para>
 
-      <!--ADD-IMAGE-->
+        <!--ADD-IMAGE-->
+      </sect3>
     </sect2>
 
     <sect2>
       <title>Storage Cost</title>
 
-      <para></para>
-
       <para>This is the cost of hosting the data in the storage plane. It does
       not include the cost of data operation such as read or write costs.
-      <emphasis role="bold">Note:</emphasis> No costs are recorded for
+      <emphasis role="bold"></emphasis></para>
+
+      <para><emphasis role="bold">Note:</emphasis> No costs are recorded for
       temporary or spill files, because the local storage is included in the
       price of the VM used to calculate the execution costs.</para>
 
@@ -107,8 +109,6 @@
 
     <sect2>
       <title>File Access Cost</title>
-
-      <para></para>
 
       <para>Many storage planes have a separate charge for data operations.
       The cost of reading and writing to the file will be included in the file
@@ -174,7 +174,7 @@
           </listitem>
 
           <listitem>
-            <para>Under-utilized nodes </para>
+            <para>Under-utilized nodes</para>
           </listitem>
 
           <listitem>
@@ -236,7 +236,7 @@
 
       <para>The <emphasis role="bold">currencyCode</emphasis> attribute should
       be configured with the ISO 4217 country code. (The platform defaults to
-      USD if the currency code is missing).<br /> The <emphasis
+      USD if the currency code is missing). The <emphasis
       role="bold">perCpu</emphasis> from the global/cost section applies to
       every component that has not been configured with its own perCpu value.
       A perCpu value specific to a component may be set by adding a
@@ -252,43 +252,20 @@
 
       <orderedlist>
         <listitem>
-           
-
-          <emphasis role="bold">limit attribute</emphasis>
-
-           
-
-          <br />
-
-           Sets the “soft” cost limit that a workunit may incur. The limit is “soft” in that it may be overridden by the 
-
-          <emphasis role="bold">maxCost</emphasis>
-
-           ECL option. A node will be terminated if it exceeds its 
-
-          <emphasis role="bold">maxCost</emphasis>
-
-           value (if set) or the limit attribute value (if the 
-
-          <emphasis role="bold">maxCost</emphasis>
-
-           not set). 
+          <para><emphasis role="bold">limit attribute</emphasis> Sets the
+          “soft” cost limit that a workunit may incur. The limit is “soft” in
+          that it may be overridden by the <emphasis
+          role="bold">maxCost</emphasis> ECL option. A node will be terminated
+          if it exceeds its <emphasis role="bold">maxCost</emphasis> value (if
+          set) or the limit attribute value (if the <emphasis
+          role="bold">maxCost</emphasis> not set).</para>
         </listitem>
 
         <listitem>
-           
-
-          <emphasis role="bold">hardlimit attribute</emphasis>
-
-           
-
-          <br />
-
-           Sets the absolute maximum cost limit, a limit that may not be overridden by setting the ECL option. The 
-
-          <emphasis role="bold">maxCost</emphasis>
-
-           value exceeding the hardlimit will be ignored. 
+          <para><emphasis role="bold">hardlimit attribute</emphasis> Sets the
+          absolute maximum cost limit, a limit that may not be overridden by
+          setting the ECL option. The <emphasis role="bold">maxCost</emphasis>
+          value exceeding the hardlimit will be ignored.</para>
         </listitem>
       </orderedlist>
 
@@ -334,9 +311,9 @@
       parameters are not supported by and may not be amended using the
       configenv interface.</para>
 
-      <para><br /> The cost parameters are provided as attributes in the
-      “cost” child element located under the /Environment/Hardware section as
-      shown in this example extract of an environment.xml file :</para>
+      <para>The cost parameters are provided as attributes in the “cost” child
+      element located under the /Environment/Hardware section as shown in this
+      example extract of an environment.xml file :</para>
 
       <programlisting>&lt;Environment&gt;
  &lt;Hardware&gt;
@@ -354,8 +331,8 @@
       <para>More New Features and Improvements Coming Soon</para>
 
       <para>There are significant opportunities for the HPCC Systems platform
-      to help developers, managers and DevOps in managing costs in the cloud.
-      </para>
+      to help developers, managers and DevOps in managing costs in the
+      cloud.</para>
 
       <para>The following new features are expected to be added in the
       future::</para>
@@ -370,7 +347,7 @@
           </listitem>
 
           <listitem>
-            <para>Historic file costs </para>
+            <para>Historic file costs</para>
           </listitem>
 
           <listitem>
@@ -378,7 +355,7 @@
           </listitem>
 
           <listitem>
-            <para>Track the costs of compilation </para>
+            <para>Track the costs of compilation</para>
           </listitem>
 
           <listitem>
@@ -390,11 +367,11 @@
           </listitem>
 
           <listitem>
-            <para>Track costs from deleted files </para>
+            <para>Track costs from deleted files</para>
           </listitem>
 
           <listitem>
-            <para>Accumulated cost by user </para>
+            <para>Accumulated cost by user</para>
           </listitem>
         </orderedlist> Cost calculation in HPCC Systems will evolve and
       improve to more closely reflect the actual costs incurred and reporting
