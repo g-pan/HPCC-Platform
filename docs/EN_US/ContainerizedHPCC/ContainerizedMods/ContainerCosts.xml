@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter id="CHAPTER_TEMPLATE">
-  <title>DocBook Chapter Template</title>
+  <title>Container Costs </title>
 
   <para>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
   tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -16,8 +16,8 @@
     <title>Cost Information</title>
 
     <para>With the advent of the cloud native HPCC Systems platform, we have
-    introduced cost information. Currently there are three types of costs that
-    are tracked.</para>
+    introduced cost information. There are three types of costs that are
+    tracked.</para>
 
     <para><orderedlist>
         <listitem>
@@ -33,13 +33,10 @@
         </listitem>
       </orderedlist></para>
 
-    <para>Let's take a more in-depth look into these types of costs and how to
-    manage them.</para>
-
     <sect2 id="ExecutionCost">
       <title>Execution Cost</title>
 
-      <para>Execution Cost is the cost of executing the workunit, graph and
+      <para>Execution Cost is the cost of executing the workunit, graph, and
       subgraphs on the Thor cluster. It includes the cost of all the nodes
       directly required to execute the job and includes the cost of:</para>
 
@@ -57,10 +54,10 @@
           </listitem>
         </orderedlist></para>
 
-      <para>A workunit’s execution cost value is displayed on its summary page
-      and is broken down at the graph, subgraph and activity level. The graph
-      and subgraph cost values are available in the metrics and graph
-      viewer.</para>
+      <para>A workunit's execution cost value is displayed in ECL Watch on its
+      summary page and is broken down at the graph, subgraph, and activity
+      level. The graph and subgraph cost values are available in the metrics
+      and graph viewer.</para>
 
       <para><variablelist>
           <varlistentry>
@@ -68,7 +65,7 @@
 
             <listitem>
               <para>The execution cost of ROXIE workunits is not currently
-              implemented.</para>
+              implemented.le</para>
             </listitem>
           </varlistentry>
         </variablelist></para>
@@ -79,8 +76,8 @@
 
       <graphic fileref="../../images/SCOST_img1_1.jpg"><!--ADD-IMAGE--></graphic>
 
-      <para>The costs are also shown on the Workunits summary page in ECL
-      Watch:</para>
+      <para>The costs are also shown on the selected Workunits summary page in
+      ECL Watch:</para>
 
       <graphic fileref="../../images/SCOST_img2_1.jpg"><!--ADD-IMAGE--></graphic>
 
@@ -88,15 +85,16 @@
         <title>Job Guillotine</title>
 
         <para>The risk of runaway costs is a concern with uncapped usage-based
-        charging. The job guillotine feature has been provided to manage this
-        risk by setting a limit on the costs that a job may incur.</para>
+        charging. Thus the job guillotine feature has been provided to manage
+        this risk by setting a limit on the costs that a job may incur.</para>
 
         <variablelist>
           <varlistentry>
             <term>Note:</term>
 
             <listitem>
-              <para>This feature is supported for Thor jobs only.</para>
+              <para>This feature is only supported for Thor jobs
+              currently.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -117,16 +115,16 @@
             <term>Note:</term>
 
             <listitem>
-              <para>No costs are recorded for temporary or spill files,
+              <para>Costs are not recorded for temporary or spill files,
               because the local storage is included in the price of the VM
-              used to calculate the execution costs</para>
+              used to calculate the execution costs.</para>
             </listitem>
           </varlistentry>
         </variablelist></para>
 
       <para>The storage costs cannot be viewed as a separate value in ECL
       Watch. They can only be viewed as part of a cost field in a logical
-      file’s summary page. The cost field includes other file related
+      file’s summary page. That cost field includes other file related
       costs.</para>
     </sect2>
 
@@ -140,11 +138,8 @@
       operations (such as delete or copy) will not be tracked or included as
       part of file access cost at this time.</para>
 
-      <para>The file access cost is currently shown as part of the cost field
-      in the Logical File’s summary page in ECL Watch. Planned improvements
-      for future versions include the replacement of the cost field with two
-      new fields showing the at rest cost and the file access cost as separate
-      values.</para>
+      <para>The file access cost displays as part of the cost field in the
+      Logical File’s summary page in ECL Watch. </para>
 
       <para>The costs incurred by a workunit for accessing logical files is
       also recorded in the workunit’s statistics and attributes. The
@@ -157,8 +152,6 @@
       costs incurred for storing and accessing logical files:</para>
 
       <graphic fileref="../../images/SCOST_img4_1.jpg"><!--ADD-IMAGE--></graphic>
-
-      <para></para>
 
       <para>The new cost field is shown in the Logical File summary page. It
       is the combined cost of storing and accessing the data.</para>
