@@ -277,113 +277,6 @@ myelk-kibana LoadBalancer 10.110.129.199 localhost 5601:31465/TCP 68m
     </sect2>
   </sect1>
 
-  <sect1 id="Azure_AKS_LogAnalytics">
-    <title>Azure Log Analytics</title>
-
-    <para>Azure Kubernetes Services (AKS) Log Analytics is an optional feature
-    designed to help monitor performance and health of Kubernetes based
-    clusters. Once enabled and associated a given AKS with an active HPCC
-    System cluster, the HPCC component logs are automatically captured by Log
-    Analytics. All STDERR/STDOUT data is captured and made available for
-    monitoring and/or querying purposes. As is usually the case with cloud
-    provider features, cost is a significant consideration and should be well
-    understood before implementation. Log content is written to the logs store
-    associated with your Log Analytics workspace.</para>
-
-    <sect2>
-      <title>Enabling Azure Log Analytics</title>
-
-      <para>Enabling Azure's Log Analytics on the target AKS cluster can be
-      done from the Azure portal or via CLI. For detailed Azure documentation:
-      Enable Container Log Analytics:</para>
-
-      <para><ulink
-      url="https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-onboard">https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-onboard</ulink></para>
-
-      <sect3 id="el4HPCC_EnableInsights_AzurePortal">
-        <title>Azure Portal</title>
-
-        <para>To enable the Azure Log Analytics on the Azure portal:</para>
-
-        <para><orderedlist>
-            <listitem>
-              <para>Select Target AKS cluster</para>
-            </listitem>
-
-            <listitem>
-              <para>Select Monitoring</para>
-            </listitem>
-
-            <listitem>
-              <para>Select Insights</para>
-            </listitem>
-
-            <listitem>
-              <para>Enable - choose default workspace</para>
-            </listitem>
-          </orderedlist></para>
-      </sect3>
-
-      <sect3 id="EnableInsights_CLI">
-        <title>Command Line</title>
-
-        <para>To enable the Azure insights from the command line:</para>
-
-        <para>Optionally, create log-analytics workspace [default workspace
-        otherwise]</para>
-
-        <para>Enter:</para>
-
-        <programlisting>az monitor log-analytics workspace create -g myresourcegroup -n myworkspace --query-access Enabled </programlisting>
-
-        <para>Enable on target AKS cluster (reference the workspace resource
-        id from the previous step)</para>
-
-        <programlisting>az aks enable-addons -g myresourcegroup -n myaks -a monitoring --workspace-resource-id  \
- "/subscriptions/xyz/resourcegroups/myresourcegroup/providers/ \
-  microsoft.operationalinsights/workspaces/myworkspace" </programlisting>
-      </sect3>
-    </sect2>
-
-    <sect2>
-      <title>Accessing HPCC Systems Logs</title>
-
-      <para>The AKS Log Analytics interface on Azure provides
-      Kubernetes-centric cluster/node/container-level health metrics
-      visualizations, and direct links to container logs via "log analytics"
-      interfaces. The logs can be queried via “Kusto” query language
-      (KQL).</para>
-
-      <para>See the Azure documentation for specifics on how to query the
-      logs.</para>
-
-      <para>Example KQL query for fetching "Transaction summary" log entries
-      from an ECLWatch container:</para>
-
-      <programlisting>let ContainerIdList = KubePodInventory 
-| where ContainerName =~ 'xyz/myesp' 
-| where ClusterId =~ '/subscriptions/xyz/resourceGroups/xyz/providers/Microsoft.
-                      ContainerService/managedClusters/aks-clusterxyz' 
-| distinct ContainerID; 
-ContainerLog 
-| where LogEntry contains "TxSummary[" 
-| where ContainerID in (ContainerIdList) 
-| project LogEntrySource, LogEntry, TimeGenerated, Computer, Image, Name, ContainerID 
-| order by TimeGenerated desc 
-| render table </programlisting>
-
-      <para>Sample output</para>
-
-      <para><graphic fileref="../../images/CL-Img03-1.jpg" /></para>
-
-      <para>More complex queries can be formulated to fetch specific
-      information provided in any of the log columns including unformatted
-      data in the log message. The Log Analytics interface facilitates
-      creation of alerts based on those queries, which can be used to trigger
-      emails, SMS, Logic App execution, and many other actions.</para>
-    </sect2>
-  </sect1>
-
   <sect1 id="AzLogAnalyticsSect">
     <title>HPCC Azure Log Analytics</title>
 
@@ -391,16 +284,17 @@ ContainerLog
     tools. It can be leveraged to process HPCC component logs by associating
     an HPCC Systems hosting AKS cluster with a Log Analytics workspace, and
     explicitly enabling the Log Analytics feature. A new or a pre-existing
-    workspace can be used for this purpose. The examples provided include a
-    script which can create an Azure Log Analytics workspace (or specify a
-    pre-existing workspace), link it to the AKS cluster hosting HPCC
-    components, and enable Log Analytics.</para>
+    workspace can be used for this purpose. </para>
+
+    <para>The examples provided include a script which can create an Azure Log
+    Analytics workspace (or specify a pre-existing workspace), link it to the
+    AKS cluster hosting HPCC components, and enable Log Analytics.</para>
 
     <para>HPCC has several components which fetch HPCC component logs via the
     HPCC LogAccess framework, which has to be configured to access the Log
-    Analytics workspace. The values yaml file provided <emphasis
-    role="bold">here</emphasis> should be used as part of a Helm based HPCC
-    deployment.</para>
+    Analytics workspace. The values yaml file provided (
+    loganalytics-hpcc-logaccess.yaml) should be used as part of a Helm based
+    HPCC deployment.</para>
 
     <sect2 id="Enabling_HPCCLOG_Analytics">
       <title>Enabling Log Analytics</title>
@@ -409,11 +303,11 @@ ContainerLog
       routed to Azure Log Analytics and accessible via the Portal</para>
 
       <sect3 id="ENV-LogAnalytics_Info">
-        <title>Provide required information in env-loganalytics</title>
+        <title>Provide Required Information in env-loganalytics</title>
 
-        <para>Populate the following values in order to create a new Azure Log
-        Analytics workspace, associate it with a target AKS cluster, and
-        enable to processing of logs</para>
+        <para>Populate the following values (?) in order to create a new Azure
+        Log Analytics workspace, associate it with a target AKS cluster, and
+        enable to processing of logs.</para>
 
         <itemizedlist>
           <listitem>
@@ -451,11 +345,11 @@ ContainerLog
       <sect3 id="Execute_enable-loganalytics">
         <title>Execute enable-loganalytics.sh</title>
 
-        <para>This helper script attempts to create new Azure LogAnalytics
-        workspace (you can provide pre-existing), associates the workspace
-        with the target AKS cluster, and enables the Azure Log Analytics
-        feature.This script is dependant on the values provided in the
-        previous step</para>
+        <para>This helper script (specify where script is?) attempts to create
+        new Azure LogAnalytics workspace (you can provide pre-existing),
+        associates the workspace with the target AKS cluster, and enables the
+        Azure Log Analytics feature.This script is dependant on the values
+        provided in the previous step</para>
       </sect3>
     </sect2>
 
@@ -530,8 +424,8 @@ ContainerLog
         above Azure Log Analytics workspace by providing appropriate logAccess
         values (such as ./loganalytics-hpcc-logaccess.yaml). The previously
         created azure-logaccess secret must be declared and associated with
-        the esp category, this can be accomplished via secrets value yaml
-        (such as ./loganalytics-logaccess-secrets.yaml)</para>
+        the ESP category, this can be accomplished via a secrets value yaml
+        (such as the provided ./loganalytics-logaccess-secrets.yaml)</para>
 
         <para>Example use:</para>
 
@@ -539,10 +433,48 @@ ContainerLog
 -f HPCC-Platform/helm/examples/azure/log-analytics/loganalytics-hpcc-logaccess.yaml -f HPCC-Platform/</programlisting>
       </sect3>
     </sect2>
+
+    <sect2>
+      <title>Accessing HPCC Systems Logs</title>
+
+      <para>The AKS Log Analytics interface on Azure provides
+      Kubernetes-centric cluster/node/container-level health metrics
+      visualizations, and direct links to container logs via "log analytics"
+      interfaces. The logs can be queried via “Kusto” query language
+      (KQL).</para>
+
+      <para>See the Azure documentation for specifics on how to query the
+      logs.</para>
+
+      <para>Example KQL query for fetching "Transaction summary" log entries
+      from an ECLWatch container:</para>
+
+      <programlisting>let ContainerIdList = KubePodInventory 
+| where ContainerName =~ 'xyz/myesp' 
+| where ClusterId =~ '/subscriptions/xyz/resourceGroups/xyz/providers/Microsoft.
+                      ContainerService/managedClusters/aks-clusterxyz' 
+| distinct ContainerID; 
+ContainerLog 
+| where LogEntry contains "TxSummary[" 
+| where ContainerID in (ContainerIdList) 
+| project LogEntrySource, LogEntry, TimeGenerated, Computer, Image, Name, ContainerID 
+| order by TimeGenerated desc 
+| render table </programlisting>
+
+      <para>Sample output</para>
+
+      <para><graphic fileref="../../images/CL-Img03-1.jpg" /></para>
+
+      <para>More complex queries can be formulated to fetch specific
+      information provided in any of the log columns including unformatted
+      data in the log message. The Log Analytics interface facilitates
+      creation of alerts based on those queries, which can be used to trigger
+      emails, SMS, Logic App execution, and many other actions.</para>
+    </sect2>
   </sect1>
 
   <sect1 id="HPCC_Systems_Application-Level_logs">
-    <title>Controlling HPCC Systems .Logging Output</title>
+    <title>Controlling HPCC Systems Logging Output</title>
 
     <para>The HPCC Systems logs provide a wealth of information which can be
     used for benchmarking, auditing, debugging, monitoring, etc. The type of
