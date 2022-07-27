@@ -275,6 +275,82 @@ myelk-kibana LoadBalancer 10.110.129.199 localhost 5601:31465/TCP 68m
       <para>Included among the complete documentation are also quick start
       videos and other helpful resources.</para>
     </sect2>
+
+    <sect2 id="HPCCAppLvlDeets">
+      <title>HPCC Application Level Details</title>
+
+      <para>The HPCC Systems logs provide a wealth of information which can be
+      used for benchmarking, auditing, debugging, monitoring, etc. By default,
+      the component logs are not filtered, and contain the following columns:
+      </para>
+
+      <programlisting>MessageID TargetAudience LogEntryClass JobID DateStamp TimeStamp ProcessId ThreadID QuotedLogMessage </programlisting>
+
+      <para>The logs can be filtered by TargetAudience, Category, or Detail
+      Level. The logging data output columns can also be configured. Logging
+      configuration settings can be applied at the global, or component
+      level.</para>
+
+      <sect3>
+        <title>Target Audience Filtering </title>
+
+        <para></para>
+
+        <para>The availble target audiences include operator(OPR), user(USR),
+        programmer(PRO), audit(ADT), or all. The filter is controlled by the
+        &lt;section&gt;.logging.audiences value. The string value is comprised
+        of 3 letter codes delimited by the aggregation operator (+) or the
+        removal operator (-). For example, all component log output to include
+        Programmer and User messages only: helm install myhpcc ./hpcc --set
+        global.logging.audiences="PRO+USR" </para>
+      </sect3>
+
+      <sect3>
+        <title>Target Category Filtering </title>
+
+        <para></para>
+
+        <para>The available target categories include disaster(DIS),
+        error(ERR), warning(WRN),information(INF),progress(PRO),metrics(MET).
+        The category (or class) filter is controlled by the
+        &lt;section&gt;.logging.classes value, comprised of 3 letter codes
+        delimited by the aggregation operator (+) or the removal operator (-).
+        For example, the mydali instance's log output to include all classes
+        except for progress: helm install myhpcc ./hpcc --set
+        dali[0].logging.classes="ALL-PRO" --set dali[0].name="mydali" </para>
+      </sect3>
+
+      <sect3>
+        <title>Log Detail Level Configuration </title>
+
+        <para>Log output verbosity can be adjusted from "critical messages
+        only" (1) up to "report all messages" (100). The default log level is
+        rather high (80) and should be adjusted accordingly. For example,
+        verbosity should be medium for all components: helm install myhpcc
+        ./hpcc --set global.logging.detail="50" Log Data Column Configuration
+        The available log data columns include messageid(MID), audience(AUD),
+        class(CLS), date(DAT), time(TIM), millitime(MLT), microtime(MCT),
+        nanotime(NNT), processid(PID), threadid(TID), node(NOD), job(JOB),
+        use(USE), session(SES), code(COD), component(COM), quotedmessage(QUO),
+        prefix(PFX), all(ALL), and standard(STD). The log data columns (or
+        fields) configuration is controlled by the
+        &lt;section&gt;.logging.fields value, comprised of 3 letter codes
+        delimited by the aggregation operator (+) or the removal operator (-).
+        For example, all component log output should include the standard
+        columns except the job ID column: helm install myhpcc ./hpcc --set
+        global.logging.fields="STD-JOB" </para>
+
+        <para>Adjustment of per-component logging values can require assertion
+        of multiple component specific values, which can be inconvinient to do
+        via the --set command line parameter. In these cases, a custom values
+        file could be used to set all required fields. For example, the ESP
+        component instance 'eclwatch' should output minimal log: helm install
+        myhpcc ./hpcc --set -f
+        ./examples/logging/esp-eclwatch-low-logging-values.yaml</para>
+
+        <para></para>
+      </sect3>
+    </sect2>
   </sect1>
 
   <sect1 id="Azure_AKS_LogAnalytics">
