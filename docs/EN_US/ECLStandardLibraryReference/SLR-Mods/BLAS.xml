@@ -14,7 +14,7 @@
   entries of the first row are followed by the entries of the second
   row.</para>
 
-  <sect1 id="BLASTypes">
+  <sect1 id="BLASTypes" role="nobrk">
     <title>Types</title>
 
     <para><emphasis role="bold">STD.BLAS.Types<indexterm>

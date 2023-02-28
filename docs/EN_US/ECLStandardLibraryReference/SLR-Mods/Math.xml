@@ -9,7 +9,7 @@
 
   <para></para>
 
-  <sect1 id="Infinity">
+  <sect1 id="Infinity" role="nobrk">
     <title>Infinity</title>
 
     <para><emphasis role="bold">STD.Math.Infinity<indexterm>
@@ -297,14 +297,14 @@ STD.Math.isFinite(c); //true
     </informaltable>
 
     <para>The <emphasis role="bold">FMod</emphasis> function returns the
-    floating-point remainder of numer/denom (rounded towards zero). </para>
+    floating-point remainder of numer/denom (rounded towards zero).</para>
 
-    <para>If denom is zero, the result depends on the divideByZero flag:
-    </para>
+    <para>If denom is zero, the result depends on the divideByZero
+    flag:</para>
 
     <itemizedlist>
       <listitem>
-        <para>If set to 'zero' or unset: returns zero. </para>
+        <para>If set to 'zero' or unset: returns zero.</para>
       </listitem>
 
       <listitem>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<sect1 id="SetColumnMapping">
+<sect1 id="SetColumnMapping" role="nobrk">
   <title>SetColumnMapping</title>
 
   <para><emphasis role="bold">STD.File.SetColumnMapping<indexterm>

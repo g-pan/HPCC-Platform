@@ -7,7 +7,7 @@
   <para>This section provides support to perform cryptographic functions on
   data in ECL.</para>
 
-  <sect1>
+  <sect1 id="CryptoLibOv" role="nobrk">
     <title>Cryptographic Library Overview</title>
 
     <para>There are three classes of Cryptographic Algorithms in the
@@ -476,7 +476,7 @@ OUTPUT(decryptedStr);</programlisting>
     <para>The Decrypt function decrypts the given
     <emphasis>encryptedData</emphasis> using the options defined in the
     Symmetric Encryption module. You can only decrypt data that was encrypted
-    by the Standard Library's Encrypt method. </para>
+    by the Standard Library's Encrypt method.</para>
 
     <para>Example:</para>
 
@@ -671,7 +671,7 @@ OUTPUT( (STRING)myPKEModule.Decrypt(encrypted) );
     <para>The Decrypt function decrypts the given
     <emphasis>encryptedData</emphasis>, using the options specified in the
     Public Key Encryption module definition. You can only decrypt data that
-    was encrypted by the Standard Library's Encrypt method. </para>
+    was encrypted by the Standard Library's Encrypt method.</para>
 
     <para>Example:</para>
 
@@ -1051,7 +1051,7 @@ OUTPUT( (STRING)MyPKEModule.Decrypt(encrypted));</programlisting>
     <para>The Decrypt function decrypts the given
     <emphasis>encryptedData</emphasis>, using the options specified in the
     Public Key Encryption From Buffer module definition. You can only decrypt
-    data that was encrypted by the Standard Library's Encrypt method. </para>
+    data that was encrypted by the Standard Library's Encrypt method.</para>
 
     <para>Example:</para>
 
@@ -1574,7 +1574,7 @@ OUTPUT( (STRING)MyPKEModule.Decrypt(encrypted));
     <para>The Decrypt function decrypts the given
     <emphasis>encryptedData</emphasis>, using the options specified in the
     Public Key Encryption From LFN module definition. You can only decrypt
-    data that was encrypted by the Standard Library's Encrypt method. </para>
+    data that was encrypted by the Standard Library's Encrypt method.</para>
 
     <para>Example:</para>
 
