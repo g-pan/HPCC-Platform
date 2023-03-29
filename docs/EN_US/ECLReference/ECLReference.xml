@@ -6,7 +6,7 @@
 
   <setinfo>
     <corpauthor>HPCC Systems<superscript>®</superscript> <para>
-        <xi:include href="../common/Version.xml"
+        <xi:include href="./common/Version.xml"
                     xpointer="xpointer(//*[@id='CHMVer'])"
                     xmlns:xi="http://www.w3.org/2001/XInclude" />
       </para></corpauthor>
