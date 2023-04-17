@@ -3,9 +3,9 @@
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter>
   <chapterinfo>
-    <date id="DateVer1">DEVELOPER NON-GENERATED VERSION</date>
+    <date id="DateVer">DEVELOPER NON-GENERATED VERSION</date>
 
-    <para id="DateVer">2023</para>
+    <para id="YrVer">2023</para>
 
     <releaseinfo id="FooterInfo">© 2023 HPCC
     Systems<superscript>®</superscript>. All rights reserved</releaseinfo>
