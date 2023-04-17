@@ -38,10 +38,8 @@
       the user, as available; otherwise, the CC BY-ND 3.0 Unported (<ulink
       url="https://creativecommons.org/licenses/by-nd/3.0/">https://creativecommons.org/licenses/by-nd/3.0/</ulink>).</para>
 
-      <para><xi:include href="common/Version.xml"
-                xpointer="xpointer(//*[@id='YrVer'])"
-                xmlns:xi="http://www.w3.org/2001/XInclude" /></para>
-
+      <para></para>
+     
     </legalnotice>
 
     <xi:include href="common/Version.xml"
