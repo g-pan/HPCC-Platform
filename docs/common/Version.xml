@@ -5,6 +5,8 @@
   <chapterinfo>
     <date id="DateVer">DEVELOPER NON-GENERATED VERSION</date>
 
+    <para id="Year0">2023</para>
+
     <releaseinfo id="FooterInfo">© 2023 HPCC
     Systems<superscript>®</superscript>. All rights reserved</releaseinfo>
 
@@ -24,7 +26,7 @@
     being used by several other document components.</para>
 
     <para id="CHMVer">2023 Version ${DOC_VERSION}</para>
-    <para id="Year0">2023</para>
+
 
 
     <para>The following line is the code to be put into the document you wish
