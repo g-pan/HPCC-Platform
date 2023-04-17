@@ -46,7 +46,7 @@
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
 
     <releaseinfo><xi:include href="common/Version.xml"
-                xpointer="xpointer(//*[@id='Year0'])"
+                xpointer="xpointer(//*[@id='YrVer'])"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
                  © HPCC Systems<superscript>®</superscript>. All rights
     reserved. Except where otherwise noted, ECL Language Reference content
