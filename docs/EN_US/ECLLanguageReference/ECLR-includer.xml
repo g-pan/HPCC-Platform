@@ -45,9 +45,11 @@
                 xpointer="xpointer(//*[@id='DateVer'])"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-    <releaseinfo><xi:include href="common/Version.xml"
+    <xi:include href="common/Version.xml"
                 xpointer="xpointer(//*[@id='YrVer'])"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
+                xmlns:xi="http://www.w3.org/2001/XInclude" />  
+
+    <releaseinfo>
                  © HPCC Systems<superscript>®</superscript>. All rights
     reserved. Except where otherwise noted, ECL Language Reference content
     licensed under Creative Commons public license.</releaseinfo>
