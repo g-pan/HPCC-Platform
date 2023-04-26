@@ -52,7 +52,7 @@
 
     <xi:include href="common/Version.xml"
                 xpointer="xpointer(//*[@id='YrVer'])"
-                xmlns:xi="http://www.w3.org/2001/XInclude" /> 
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
 
     <releaseinfo>
                  © 2023 HPCC Systems<superscript>®</superscript>. All rights
