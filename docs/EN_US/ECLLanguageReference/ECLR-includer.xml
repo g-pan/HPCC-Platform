@@ -55,7 +55,9 @@
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
 
     <releaseinfo>
-                 © 2023 HPCC Systems<superscript>®</superscript>. All rights
+                 © <xi:include href="common/Version.xml"
+                xpointer="xpointer(//*[@id='YrVer'])"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> HPCC Systems<superscript>®</superscript>. All rights
     reserved. Except where otherwise noted, ECL Language Reference content
     licensed under Creative Commons public license.</releaseinfo>
 
