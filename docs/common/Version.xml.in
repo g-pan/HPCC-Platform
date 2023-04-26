@@ -26,6 +26,8 @@
 
     <para id="CHMVer">2023 Version ${DOC_VERSION}</para>
 
+    <para id="YrVer">2023</para>
+
     <para>The following line is the code to be put into the document you wish
     to include the above version info in:</para>
 
