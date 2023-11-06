@@ -27,6 +27,7 @@
 <xsl:param name="chunk.section.depth" select="2" />
 <xsl:param name="toc.section.depth">2</xsl:param>
 <xsl:param name="variablelist.as.table" select="1" />
+<xsl:param name="suppress.navigation" select="1" />
 <xsl:param name="generate.toc">book toc</xsl:param>
 
 <!-- Custom HTML specific processing instruction rules -->
