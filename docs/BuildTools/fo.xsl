@@ -28,7 +28,7 @@
 <!--xsl:param name="title.font.family" select="sans-serif"/-->
 <xsl:param name="toc.section.depth" select="1"/>
 
-<!--===========================SPECIAL_TOC_SAUCE======================-->
+<!--===========================SPECIAL_TOC_SAUCE=======================-->
 <xsl:template name="page.number.format">
   <xsl:param name="element" select="local-name(.)"/>
   <xsl:choose>
