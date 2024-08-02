@@ -245,7 +245,6 @@ jobs:
         with:
           name: html-help-documents
           path: |
-            ${{ needs.preamble.outputs.folder_build }}/docs/EN_US/EclipseHelp/*.zip
             ${{ needs.preamble.outputs.folder_build }}/docs/EN_US/HTMLHelp/*.zip
             ${{ needs.preamble.outputs.folder_build }}/docs/PT_BR/HTMLHelp/*.zip
           compression-level: 0
