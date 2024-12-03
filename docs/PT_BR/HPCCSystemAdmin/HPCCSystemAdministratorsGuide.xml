@@ -1170,7 +1170,7 @@
     <!--/*Including special SysAdmin Config Module -Sect1- */-->
 
     <xi:include href="HPCCSystemAdmin/SA-Mods/SysAdminConfigMod.xml"
-                xpointer="xpointer(//*[@id='configuring-a-multi-node-Systems'])"
+                xpointer="xpointer(//*[@id='configuring-a-multi-node-system'])"
                 xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
     <sect1 id="SysAdm_Env.conf">
