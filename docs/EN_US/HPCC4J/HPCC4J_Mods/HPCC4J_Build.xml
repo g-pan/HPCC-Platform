@@ -11,7 +11,7 @@
 
   <para>ThIS IS A TEST ROLE</para>
 
-  <para><programlisting role="wsig">&lt;programlisting language="bash"&gt;scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem 
+  <para><programlisting role="font8">&lt;programlisting language="bash"&gt;scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem 
 scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem &lt;/programlisting&gt;</programlisting>AND
   ANOTHER TEST of db:PI no qualifier</para>
 
