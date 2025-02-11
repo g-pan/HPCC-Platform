@@ -23,7 +23,7 @@ scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate
 
   <para>AND ANOTHER PI with PT</para>
 
-  <programlisting><?dbfo font-size="7pt"?>&lt;programlisting language="bash"&gt;scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem 
+  <programlisting><?font-size="7pt" ?>&lt;programlisting language="bash"&gt;scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem 
 scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem &lt;/programlisting&gt;</programlisting>
 
   <para><variablelist>
