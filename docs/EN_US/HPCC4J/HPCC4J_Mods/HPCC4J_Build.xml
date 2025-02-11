@@ -9,17 +9,17 @@
 
   <programlisting>mvn install</programlisting>
 
-  <para>ThIS IS A TEST ROLE</para>
+  <para>ThIS IS A TEST ROLE font8</para>
 
   <para><programlisting role="font8">&lt;programlisting language="bash"&gt;scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem 
 scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem &lt;/programlisting&gt;</programlisting>AND
-  ANOTHER TEST of db:PI no qualifier</para>
+  ANOTHER TEST; font7</para>
 
-  <programlisting><?dbfo font-size="7"?>scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem </programlisting>
+  <programlisting role="font7">scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem </programlisting>
 
-  <para>ANOTHER TEST of db:PI Q qualifier</para>
+  <para role="font9">ANOTHER TEST font9</para>
 
-  <programlisting><?dbfo font-size="7q"?>scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem </programlisting>
+  <programlisting>scp /home/hpcc/certificate/key.pem hpccadmin@nodeX:/home/hpcc/certificate/key.pem scp /home/hpcc/certificate/public.key.pem hpccadmin@nodeX:/home/hpcc/certificate/public.key.pem </programlisting>
 
   <para>AND ANOTHER PI with PT</para>
 

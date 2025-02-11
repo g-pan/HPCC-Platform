@@ -144,9 +144,25 @@
   </fo:block>
 </xsl:template>
 
+
+<!--PRG LIST-FONT REDUX-->
+<xsl:template match="programlisting[@role='font9']">
+  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#bcbec0">
+    <xsl:attribute name="font-size">9pt</xsl:attribute>
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
+
 <xsl:template match="programlisting[@role='font8']">
-  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#f0f0f0">
-    <xsl:attribute name="font-size">10pt</xsl:attribute>
+  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#bcbec0">
+    <xsl:attribute name="font-size">8pt</xsl:attribute>
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="programlisting[@role='font7']">
+  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#939958">
+    <xsl:attribute name="font-size">7pt</xsl:attribute>
     <xsl:apply-templates/>
   </fo:block>
 </xsl:template>
