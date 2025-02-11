@@ -144,11 +144,9 @@
   </fo:block>
 </xsl:template>
 
-<!--para-syntax-role-elim-hyph-17-->
 <xsl:template match="programlisting[@role='font8']">
-  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties">
-      <xsl:attribute name="shade.verbatim">1</xsl:attribute>
-      <xsl:attribute name="font-size">10pt</xsl:attribute>
+  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#f0f0f0">
+    <xsl:attribute name="font-size">10pt</xsl:attribute>
     <xsl:apply-templates/>
   </fo:block>
 </xsl:template>
