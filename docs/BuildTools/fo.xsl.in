@@ -147,14 +147,14 @@
 
 <!--PRG LIST-FONT REDUX-->
 <xsl:template match="programlisting[@role='font9']">
-  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#bcbec0">
+  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#E0E0E0">
     <xsl:attribute name="font-size">9pt</xsl:attribute>
     <xsl:apply-templates/>
   </fo:block>
 </xsl:template>
 
 <xsl:template match="programlisting[@role='font8']">
-  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#bcbec0">
+  <fo:block xsl:use-attribute-sets="monospace.verbatim.properties" background-color="#E0E0E0">
     <xsl:attribute name="font-size">8pt</xsl:attribute>
     <xsl:apply-templates/>
   </fo:block>
