@@ -2094,7 +2094,7 @@ sudo /etc/init.d/hpcc-init -c esp start
           later).</para>
 
           <para><emphasis role="underline"><ulink
-          url="http://www.microsoft.com/en-us/download/details.aspx?id=3988">http://www.microsoft.com/en-us/download/details.aspx?id=3988</ulink></emphasis></para>
+          url="https://www.microsoft.com/en-us/download">http://www.microsoft.com/en-us/download</ulink></emphasis></para>
         </listitem>
 
         <listitem>
@@ -2301,7 +2301,7 @@ add1(10);
         at:</para>
 
         <para><ulink
-        url="https://github.com/hpcc-systems/HPCC-Platform/tree/master/testing/ecl/embedjava.ecl">https://github.com/hpcc-systems/HPCC-Platform/blob/master/testing/regress/ecl/embedjava.ecl</ulink></para>
+        url="https://github.com/hpcc-systems/HPCC-Platform/tree/master/testing/regress/ecl">https://github.com/hpcc-systems/HPCC-Platform/blob/master/testing/regress/ecl/</ulink></para>
       </sect2>
 
       <sect2 id="Add_On_Javascript" role="brk">

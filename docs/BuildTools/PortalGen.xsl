@@ -19,6 +19,8 @@
 <!-- Import docbook XSL and other resources from Jenk-Build locale -->
 <!-- Removed CODE FOR "supppress.navigation" select="1" per JIRA 28382 -->
 <xsl:import href="../resources/docbook-xsl/eclipse/profile-eclipse.xsl"/>
+
+<xsl:output method="html" encoding="UTF-8" />
 <xsl:param name="img.src.path">../</xsl:param>
 <xsl:param name="html.stylesheet">eclipsehelp.css</xsl:param>
 <xsl:param name="use.id.as.filename" select="1" />
@@ -28,6 +30,8 @@
 <xsl:param name="toc.section.depth">2</xsl:param>
 <xsl:param name="variablelist.as.table" select="1" />
 <xsl:param name="generate.toc">book toc</xsl:param>
+
+
 
 <!-- Custom HTML specific processing instruction rules -->
  <xsl:template match="processing-instruction('linebreak')">
