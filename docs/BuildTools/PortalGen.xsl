@@ -5,7 +5,6 @@
                 xmlns:set="http://exslt.org/sets"
 		version="1.0"
                 exclude-result-prefixes="doc exsl set">
-
 <xsl:output method="html" encoding="UTF-8" />
 
 <!-- ********************************************************************
