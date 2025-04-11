@@ -27,7 +27,7 @@
   <xsl:param name="toc.section.depth">2</xsl:param>
   <xsl:param name="variablelist.as.table" select="1" />
   <xsl:param name="generate.toc">book toc</xsl:param>
-<!--HPCC-33559 -->  <!-- Specify output encoding as UTF-8 -->
+<!--HPCC-33559-2025-->  <!-- Specify output encoding as UTF-8 -->
 <xsl:param name="chunker.output.encoding">UTF-8</xsl:param>
 
   <!-- Custom HTML specific processing instruction rules -->
