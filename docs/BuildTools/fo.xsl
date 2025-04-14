@@ -401,11 +401,25 @@
        </fo:inline>
 </xsl:template>
 
+<xsl:template match="emphasis[@role='codeital']">
+       <fo:inline font-family="monospace" font-style="italic">
+         <xsl:apply-templates/>
+       </fo:inline>
+</xsl:template>
+
 <xsl:template match="ulink">
      <fo:inline color="blue" text-decoration="underline">
              <xsl:apply-templates/>
        </fo:inline>
 </xsl:template>
+
+
+<xsl:template match="legalnotice">
+  <fo:block hyphenate="false">
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
+
 
 <!--Special-TABLE-Striping-TEMPLATE-->
 <!--SetTabstyle=striped-OR-greyhead-for-Alternate-Table-styles-->
