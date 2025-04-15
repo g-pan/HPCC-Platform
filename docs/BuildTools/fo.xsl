@@ -307,7 +307,13 @@
         </fo:inline>
  </xsl:template>
 
-    
+<!--LegalNotice-Properties-->
+<xsl:template match="legalnotice">
+  <fo:block hyphenate="false">
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
+
 
 <!--COLORING-TEMPLATES-->
 <xsl:template match="emphasis[@role='bluebold']">
