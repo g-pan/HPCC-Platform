@@ -14,7 +14,7 @@
      Stylesheet distribution from Norman Walsh.
      Modified and customized for HPCC Systems by GPanagiotatos - 2013,2017
 
-       ******************************************************************** -->
+     ******************************************************************** -->
   <!-- Import docbook XSL and other resources from Jenk-Build locale -->
   <!-- Removed CODE FOR "supppress.navigation" select="1" per JIRA 28382 -->
   <xsl:import href="../resources/docbook-xsl/eclipse/profile-eclipse.xsl"/>
