@@ -1865,6 +1865,10 @@ sudo /opt/HPCCSystems/sbin/hpcc-push.sh \
         overwrites any existing keys and distributes the keys to the
         components.</para>
       </sect2>
+
+      <xi:include href="Installing_and_RunningTheHPCCPlatform/Inst-Mods/ZAP.xml"
+                  xpointer="xpointer(//*[@id='ZAP'])"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/>
     </sect1>
 
     <sect1 id="Uninstalling-the-HPCC">
@@ -2041,7 +2045,7 @@ sudo /etc/init.d/hpcc-init -c esp start
 
         <para>HPCC Systems is extending support and development to more
         systemd services. We intend to continue support for older System V
-        based systems through the hpcc-init. </para>
+        based systems through the hpcc-init.</para>
 
         <para>The hpcc-init system service will support "start", "stop" and
         "restart" options.</para>
