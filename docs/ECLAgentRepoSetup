@@ -1,0 +1,67 @@
+# ECL Agent & Repository Setup Instructions
+
+## 1. ECL Agent Overview & Generating Instructions
+
+- **Purpose:** The ECL agent generates standard Copilot instructions for your repository, which can be customized to suit your needs.
+- **How to Generate Instructions:**
+  1. Open the ECL agent using **Control + Shift + I**.
+  2. Navigate to the agent **settings** menu.
+  3. Use the provided option to **generate instructions**.
+  4. The agent will create markdown files with default Copilot instructions and place them in a specific location in your repository.
+- **Customizing Instructions:**
+  - Review and edit the generated markdown instructions to better fit the needs of your repository.
+  - Customizing instructions improves agent performance and ensures relevance to your project.
+- **Persisting Instructions:**
+  - Once generated and committed, instructions are automatically picked up by the agent every time. There is no need to regenerate unless requirements change.
+
+## 2. Importance and Benefits of Standard Instructions
+
+- Standard instructions help set up the environment, provide consistent guidelines for Copilot, and improve agent efficiency.
+- Well-written instructions reduce the need for manual intervention and enhance Copilot’s ability to assist.
+
+## 3. Unit Tests and Coverage Reports
+
+- **Why Add Unit Tests?**
+  - Unit tests ensure your ECL code functions correctly and help catch errors early in development.
+- **How to Create Unit Tests:**
+  1. Clear the agent’s input.
+  2. Ask Copilot to generate unit tests for a specific ECL function.
+  3. Review and run the tests to verify correctness.
+- **Coverage Reports:**
+  - Coverage reports indicate what percentage of your code is tested.
+  - Aim for as high coverage as possible (ideally 100%, but above 60% is good).
+  - Use these reports to identify untested areas.
+- **Benefits:**
+  - Improves code quality, helps identify issues early, and ensures standards are met.
+
+## 4. ECL Agent Documentation Assistance
+
+- The ECL agent can answer questions by referencing documentation stored locally in a vector database.
+- When answering, it may provide links to relevant documentation sections for further reading.
+- The agent uses similarity search to find and present the most relevant information.
+
+## 5. Workspace Agent
+
+- The workspace agent collects information from the repository and can generate examples based on your current workspace context.
+
+## 6. Improving Documentation
+
+- Invest time in writing clear, comprehensive instructions and documentation.
+- Good documentation improves agent performance and reduces repetitive queries.
+- Consider opening GitHub issues for documentation tasks and assigning them to Copilot for asynchronous work.
+
+## 7. Follow-Up Tasks
+
+- [ ] **Generate Instructions:** Use Copilot to generate and commit instructions to the repository. *(Greg)*
+- [ ] **Create Unit Tests:** Add unit tests to ensure the ECL code works correctly. *(Greg)*
+- [ ] **Add Coverage Reports:** Set up coverage reports for ECL code. *(Greg)*
+- [ ] **Improve Documentation:** Enhance the HTML documentation for better usability. *(Greg)*
+- [ ] **Set Up DocBook Instructions:** Add instructions for generating DocBook XML documentation, including meta attributes and CLI execution. *(Greg)*
+- [ ] **Enable Issues in Fork:** Enable GitHub Issues in your fork of the HPCC platform repo so Copilot can work on them offline. *(Greg)*
+
+## 8. Future Plans
+
+- Plan to present this workflow and its benefits at future events (e.g., Devcon) to share knowledge with a broader audience.
+
+---
+*For questions, refer to the agent’s documentation search feature or consult your team lead.*
