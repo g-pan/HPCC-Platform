@@ -79,12 +79,20 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../../BuildTools/cmake_config/${DOC_DIR_NAME
 - XSLT-based code generation: `esdl2cpp_*.xslt`, `esdl2java_*.xslt`, `esdl2ecl.xslt`
 - Service interface generation from XML schemas
 
+### Certificate Management
+- **Helm Chart Certificate Configuration**: Support for multiple certificate issuers (local, public, remote, signing)
+- **Alternative Domains**: `certificates.issuers.remote.alternativeDomains` array for multi-domain certificate support
+- **cert-manager Integration**: Automated certificate generation and renewal using Kubernetes cert-manager
+- **Multi-Domain Certificates**: Single certificates valid across primary domain and multiple alternative domains
+- **DNS Names Generation**: Service names combined with all configured domains for comprehensive SAN coverage
+
 ## Common Anti-Patterns to Avoid
 
 - **Don't treat ECL like procedural code** - it's declarative and non-procedural
 - **Don't break DocBook XML validation** - always validate against DTD 4.5
 - **Don't hardcode paths** - use CMake variables like `${CMAKE_CURRENT_SOURCE_DIR}`
 - **Don't skip HPCC copyright headers** - all files need Apache 2.0 + HPCC Systems copyright
+- **Don't configure single-domain certificates when multi-domain needed** - use alternativeDomains for simplified certificate management
 
 ## Quick Reference Files
 
@@ -93,6 +101,42 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../../BuildTools/cmake_config/${DOC_DIR_NAME
 - `CMakeLists.txt`: Build configuration entry points
 - `ECLR_mods/BltInFunc-*.xml`: ECL built-in function documentation modules
 - `DaliAdmin.xml`: Example of system administration documentation structure
+
+## Documentation Structure
+
+### Main Documentation Directory (`C:\DATA\HPCC-Platform\docs`)
+
+The HPCC Systems platform maintains a comprehensive documentation structure with multiple language support:
+
+#### Core Documentation Components
+- **EN_US/**: English documentation (primary)
+  - ECLLanguageReference/
+  - ECLProgrammersGuide/
+  - HPCCSystemAdmin/
+  - Installing_and_RunningTheHPCCPlatform/
+  - ContainerizedHPCC/
+  - HPCCDataHandling/
+  - VisualizingECL/
+  - RoxieReference/
+  - ECLStandardLibraryReference/
+  - HPCCClientTools/
+
+- **PT_BR/**: Portuguese Brazilian translations
+- **BuildTools/**: CMake configuration and XSLT transformation files
+- **common/**: Shared resources (CSS, images, templates)
+
+#### Developer Documentation (`devdoc/`)
+- **Development.md**: Building and development guide
+- **StyleGuide.md**: C++ coding standards
+- **docs/**: Documentation about documentation
+  - ContributeDocs.md: Guidelines for contributing documentation
+  - HPCCStyleGuide.md: Writing style guide for HPCC documentation
+- **userdoc/**: Informal user documentation and troubleshooting guides
+
+#### Build System Integration
+- **CMake-based documentation build**: Uses DOCBOOK_TO_PDF and DOCBOOK_TO_HTML macros
+- **Multi-language support**: DOC_LANG variable for internationalization
+- **XSLT transformations**: Convert DocBook XML to PDF/HTML output formats
 
 ## External Resources
 
