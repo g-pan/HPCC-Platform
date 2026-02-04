@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<sect1 id="ESDL_AuthFeature_TokenSemantics">
+  <title>auth_feature Token Semantics</title>
+
+  <para><indexterm>
+      <primary>auth_feature token semantics</primary>
+    </indexterm>The <emphasis role="bold">auth_feature</emphasis> attribute
+  for <literal>ESPmethod</literal> and <literal>ESPservice</literal> elements
+  specifies required feature access levels for each method using a
+  comma-delimited list of tokens. These attributes should be handled
+  consistently across static and dynamic services.</para>
+
+  <para>When the <emphasis role="bold">auth_feature</emphasis> attribute is
+  defined at the service level, all tokens apply to all methods in the
+  service. When defined at the method level, all tokens apply to that method.
+  When defined in both, all tokens from both attributes apply to the
+  method.</para>
+
+  <sect2 id="ESDL_AuthFeature_FeatureIndependentTokens">
+    <title>Feature-Independent Tokens</title>
+
+    <para>The following tokens are supported and do not reference a specific
+    feature:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><literal>None</literal> – No feature access is required. When
+        used standalone, no access is required; when combined with other
+        tokens, it is ignored. Currently supported by <literal>esdllib</literal>
+        and <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>Deferred</literal> – Effectively equivalent to
+        <literal>None</literal>, but suggests that security will be applied by
+        the method handler. Currently supported by <literal>esdllib</literal>
+        and <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>!X</literal> (where 'X' is any value) – Reserved for
+        future use; constraints on 'X' will be defined later. This is new
+        syntax.</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="ESDL_AuthFeature_PermittedTokens">
+    <title>Permitted Feature-Specific Tokens</title>
+
+    <para>Given a feature named <literal>MyFeature</literal>, the following
+    tokens (excluding quotes) are permitted:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><literal>MyFeature</literal> – The
+        <literal>SecAccess_Read</literal> access level is required. Currently
+        accepted by <literal>esdllib</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:Access</literal> – The
+        <literal>SecAccess_Access</literal> access level is required.
+        Currently supported by <literal>esdllib</literal> and
+        <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:Read</literal> – The
+        <literal>SecAccess_Read</literal> access level is required. Currently
+        supported by <literal>esdllib</literal> and
+        <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:Write</literal> – The
+        <literal>SecAccess_Write</literal> access level is required. Currently
+        supported by <literal>esdllib</literal> and
+        <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:Full</literal> – The
+        <literal>SecAccess_Full</literal> access level is required. Currently
+        supported by <literal>esdllib</literal> and
+        <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:None</literal> – No access level is required
+        for the feature. This is useful for a method attribute to bypass its
+        service attribute. Currently supported by <literal>esdllib</literal>
+        and <literal>hidl</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:Deferred</literal> – Similar to
+        <literal>MyFeature:None</literal>.</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="ESDL_AuthFeature_ForbiddenTokens">
+    <title>Forbidden Tokens</title>
+
+    <para>Given the same feature named <literal>MyFeature</literal>, the
+    following tokens are not permitted:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><literal>MyFeature:</literal> – Not permitted; two shortcuts to
+        the same value are not necessary. Currently accepted by
+        <literal>hidl</literal> as equivalent to
+        <literal>MyFeature:Read</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal>MyFeature:X</literal> (where 'X' is any value not
+        explicitly referenced above) – Not permitted; 'X' is an error that
+        should be addressed as soon as possible. Currently supported by
+        <literal>hidl</literal> as equivalent to
+        <literal>MyFeature:Full</literal>.</para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="ESDL_AuthFeature_Examples">
+    <title>Examples</title>
+
+    <para><emphasis role="bold">Example 1: Service-level
+    authentication</emphasis></para>
+
+    <programlisting>ESPservice [auth_feature("DataAccess:Read")] DataService
+{
+  ESPmethod GetData(GetDataRequest, GetDataResponse);
+  ESPmethod ListData(ListDataRequest, ListDataResponse);
+};
+</programlisting>
+
+    <para>In this example, both <literal>GetData</literal> and
+    <literal>ListData</literal> methods require
+    <literal>SecAccess_Read</literal> access for the
+    <literal>DataAccess</literal> feature.</para>
+
+    <para><emphasis role="bold">Example 2: Combined service and method
+    authentication</emphasis></para>
+
+    <programlisting>ESPservice [auth_feature("DataAccess:Read")] DataService
+{
+  ESPmethod GetData(GetDataRequest, GetDataResponse);
+  ESPmethod [auth_feature("DataAccess:Write")] UpdateData(UpdateDataRequest, UpdateDataResponse);
+};
+</programlisting>
+
+    <para>In this example, <literal>GetData</literal> requires only
+    <literal>SecAccess_Read</literal> access, while
+    <literal>UpdateData</literal> requires both
+    <literal>SecAccess_Read</literal> and <literal>SecAccess_Write</literal>
+    access for the <literal>DataAccess</literal> feature.</para>
+
+    <para><emphasis role="bold">Example 3: Method bypassing service
+    authentication</emphasis></para>
+
+    <programlisting>ESPservice [auth_feature("DataAccess:Full")] DataService
+{
+  ESPmethod GetData(GetDataRequest, GetDataResponse);
+  ESPmethod [auth_feature("DataAccess:None")] GetPublicData(GetPublicDataRequest, GetPublicDataResponse);
+};
+</programlisting>
+
+    <para>In this example, <literal>GetData</literal> requires
+    <literal>SecAccess_Full</literal> access, while
+    <literal>GetPublicData</literal> requires no access for the
+    <literal>DataAccess</literal> feature.</para>
+  </sect2>
+</sect1>

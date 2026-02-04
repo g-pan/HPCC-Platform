@@ -260,5 +260,8 @@
     <xi:include href="DynamicESDL/DESDL-Mods/ESDLauth_feature.xml"
                 xpointer="element(/1)"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="DynamicESDL/DESDL-Mods/ESDLAuthFeature2.xml"
+                xpointer="element(/1)"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
   </chapter>
 </book>
