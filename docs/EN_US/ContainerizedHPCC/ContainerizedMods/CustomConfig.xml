@@ -10,7 +10,6 @@
     <para>This section walks through creating a customized configuration YAML
     file and deploying an HPCC Systems<superscript>®</superscript> platform
     using the default configuration plus the customizations. Once you
-    understand the concepts in this chapter, you can refer to the next chapter
     for a reference to all configuration value settings.</para>
 
     <para>There are several ways to customize a platform deployment. We
@@ -147,7 +146,6 @@
   replicas: 2  
   numChannels: 2
   serverReplicas: 0
-  localAgent: false
   traceLevel: 1
   topoServer:
     replicas: 1
@@ -164,7 +162,6 @@
   replicas: 2  
   numChannels: 2
   serverReplicas: 0
-  localAgent: false
   traceLevel: 1
   topoServer:
     replicas: 1
@@ -225,9 +222,33 @@
         <listitem>
           <para>Create a new text file and name it <emphasis
           role="bold">twothors.yaml</emphasis> and open it in a text
-          editor.</para>
+              <sect2 id="ConfiguringRemoteDFSClients" role="nobrk">
+                <title>Configuring Remote DFS Clients with Certificates</title>
+                <para>This section describes how to configure HPCC Systems<superscript>®</superscript> cloud/Kubernetes environments to enable secure remote DFS (Distributed File System) access between clusters using client certificates and Helm best practices.</para>
+                <sect3 id="DFS_Overview">
+                  <title>Overview</title>
+                  <para>Two HPCC Helm environments (e.g., env1 and env2) can be configured so that env2 (client) securely accesses logical files from env1 (server) via DFS, using client certificates for mutual TLS (mTLS). Environments may be in separate Kubernetes namespaces or clusters.</para>
+                </sect3>
+                <sect3 id="DFS_BestPractices">
+                  <title>Best Practices: YAML and Helm Values</title>
+                  <itemizedlist>
+                    <listitem><para>Isolate certificate-related customizations in separate YAML files.</para></listitem>
+                    <listitem><para>Helm merges base chart defaults with custom values YAMLs at install/update.</para></listitem>
+                  </itemizedlist>
+                </sect3>
+                <sect3 id="DFS_StepByStep">
+                  <title>Step-by-Step Setup</title>
+                  <sect4 id="DFS_ServerSetup">
+                    <title>Server Side (env1) Setup</title>
+                    <orderedlist>
+                      <listitem><para>Prepare namespace:</para><programlisting>kubectl create ns env1
+          kubectl config set-context --current --namespace=env1</programlisting></listitem>
+                      <listitem><para>Install Jetstack cert-manager for certificate management:</para><programlisting>helm repo add jetstack https://charts.jetstack.io
+          editor.</programlisting></para>
 
+                      <listitem><para>Enable certificates in custom values YAML:</para><programlisting lang="YAML">certificates:
           <para>You can use any text editor.</para>
+                      <listitem><para>Configure remote certificate issuer:</para><programlisting lang="YAML">certificates:
         </listitem>
 
         <listitem>
@@ -236,6 +257,7 @@
         </listitem>
 
         <listitem>
+                      <listitem><para>Configure ESP DFS service with remote clients:</para><programlisting lang="YAML">- name: dfs
           <para>Copy the entire <emphasis role="bold">thor:</emphasis> section
           and paste it into the new twothors.yaml file.</para>
         </listitem>
@@ -245,14 +267,25 @@
           the first line (thor:), and paste it at the end of the file.</para>
         </listitem>
 
+                      <listitem><para>Create root certificate authority and secret:</para><programlisting>openssl req -x509 -newkey rsa:2048 -nodes -keyout ca.key -sha256 -days 1825 -out ca.crt \
         <listitem>
           <para>In the second block, edit the value for <emphasis
+                      <listitem><para>Deploy HPCC with custom settings:</para><programlisting>helm install env1 hpcc/hpcc -f mycustomsettings.yaml</programlisting></listitem>
+                      <listitem><para>Extract client certificate and key:</para><programlisting>kubectl get secret client-remote-dfs-dfs-env2-tls -o json | jq -r '.data."tls.crt"' | base64 -d > env2tls.crt
           role="bold">name:</emphasis> and change it to <emphasis
           role="bold">thor10.</emphasis></para>
-        </listitem>
+                      <listitem><para>Record the DFS service endpoint:</para><programlisting>kubectl get svc dfs</programlisting></listitem>
+                    </orderedlist>
+                  </sect4>
+                  <sect4 id="DFS_ClientSetup">
+                    <title>Client Side (env2) Setup</title>
+                    <orderedlist>
+                      <listitem><para>Switch/create namespace:</para><programlisting>kubectl create ns env2
+                      <listitem><para>Create secret from exported certs:</para><programlisting>kubectl create secret generic env1-access \
 
+                      <listitem><para>Reference secret in custom values YAML:</para><programlisting lang="YAML">secrets:
         <listitem>
-          <para>In the second block, edit the value for <emphasis
+                      <listitem><para>Reference remote data plane and remotes:</para><programlisting lang="YAML">storage:
           role="bold">prefix:</emphasis> and change it to <emphasis
           role="bold">thor10.</emphasis></para>
         </listitem>
@@ -265,8 +298,41 @@
 
         <listitem>
           <para>Save the file and close the text editor.</para>
+                      <listitem><para>Deploy client HPCC environment:</para><programlisting>helm install env2 hpcc/hpcc -f client-remotesetup.yaml</programlisting></listitem>
+                    </orderedlist>
+                  </sect4>
+                </sect3>
+                <sect3 id="DFS_Testing">
+                  <title>Testing</title>
+                  <orderedlist>
+                    <listitem><para>Create a test logical file on server (env1) via ECL:</para><programlisting lang="ECL">ds := DATASET([{1, 'one'}, {2, 'two'}, {3, 'three'}], {unsigned num, string str}, DISTRIBUTED);
 
+                    <listitem><para>Read from client (env2) via ECL:</para><programlisting lang="ECL">ds := DATASET('~remote::env1::somescope::somefilename', {unsigned num, string str}, FLAT);
           <para>The resulting twothors.yaml file should look like this</para>
+                  </orderedlist>
+                </sect3>
+                <sect3 id="DFS_KeyTakeaways">
+                  <title>Key Takeaways</title>
+                  <itemizedlist>
+                    <listitem><para>Isolate configuration changes per area in separate YAML files and merge via Helm.</para></listitem>
+                    <listitem><para>Use cert-manager to automate CA and client certificate creation in Kubernetes.</para></listitem>
+                    <listitem><para>Define remote clients in ESP settings to trigger remote client certificate generation.</para></listitem>
+                    <listitem><para>Export and handle secrets securely; record remote DFS service endpoints for client configuration.</para></listitem>
+                    <listitem><para>Ensure correct mapping of storage volumes and logical planes across clusters.</para></listitem>
+                    <listitem><para>mTLS ensures encrypted/authenticated cross-cluster communication.</para></listitem>
+                  </itemizedlist>
+                </sect3>
+                <sect3 id="DFS_References">
+                  <title>References</title>
+                  <itemizedlist>
+                    <listitem><para>HPCC Helm Charts: https://github.com/hpcc-systems/helm-chart</para></listitem>
+                    <listitem><para>Cert-manager Documentation: https://cert-manager.io/docs/</para></listitem>
+                    <listitem><para>Kubernetes Secrets: https://kubernetes.io/docs/concepts/configuration/secret/</para></listitem>
+                    <listitem><para>Helm Custom Values: https://helm.sh/docs/chart_template_guide/values_files/</para></listitem>
+                    <listitem><para>HPCC Systems: https://hpccsystems.com/</para></listitem>
+                  </itemizedlist>
+                </sect3>
+              </sect2>
 
           <para><emphasis role="bold">Note:</emphasis> The comments have been
           removed to simplify the example:</para>
@@ -324,7 +390,6 @@ helm upgrade mycluster hpcc/hpcc -f tworoxies.yaml -f twothors.yaml
       <para>You can specify more than one custom configuration by repeating
       the -f parameter.</para>
 
-      <para>For example:</para>
 
       <para><programlisting>helm install mycluster hpcc/hpcc  -f tworoxies.yaml -f thorWithPipe.yaml</programlisting></para>
 
@@ -521,11 +586,9 @@ helm upgrade mycluster hpcc/hpcc -f nothor.yaml</programlisting></para>
           <para><programlisting>helm repo add hpcc https://hpcc-systems.github.io/helm-chart/</programlisting></para>
 
           <para>If you have added it, update to the latest charts:</para>
-
           <para><programlisting>helm repo update</programlisting></para>
         </listitem>
 
-        <listitem>
           <para>Create a new text file and name it <emphasis
           role="bold">noroxie.yaml</emphasis> and open it in a text
           editor.</para>
@@ -654,21 +717,18 @@ eclagent:
 
           <para>You can use any text editor.</para>
         </listitem>
-
         <listitem>
           <para>Open the default values file that you saved earlier
           (myvalues.yaml) in a text editor.</para>
         </listitem>
 
         <listitem>
-          <para>Copy the entire <emphasis role="bold">thor:</emphasis> section
           and paste it into the new threethorsonequeue.yaml file.</para>
         </listitem>
 
         <listitem>
           <para>Copy the entire contents of the new yaml file, except the
           first line (thor:), and paste it at the end of the file <emphasis
-          role="bold">twice</emphasis>.</para>
 
           <para>This creates three - name: sections.</para>
         </listitem>
@@ -746,7 +806,6 @@ eclagent:
           threethorsonequeue.yaml file.</para>
         </listitem>
 
-        <listitem>
           <para>Deploy your HPCC Systems Platform, adding the new
           configuration to your command:</para>
 
@@ -1141,7 +1200,6 @@ thor: []
 
                 <entry>Storage cost per gigabyte per month.</entry>
               </row>
-
               <row>
                 <entry><emphasis>storageReads</emphasis></entry>
 
