@@ -176,7 +176,45 @@ This will show you all differences, using the same ignore filters as
 before, between your two branches. Once you\'re happy with the
 differences, commit and issue a pull-request.
 
-TODO: Describe compiler tests on Windows.
+On Windows, the process is similar but uses batch files instead of shell scripts:
+
+Step 1: Set up the regression environment variables by creating a `setreg.bat` file in the `ecl/regress` directory. You can copy `setreg.bat.sample` as a template:
+
+```batch
+copy ecl\regress\setreg.bat.sample ecl\regress\setreg.bat
+```
+
+Edit `setreg.bat` to configure your local paths:
+- `regresstgt` - Directory where test results will be written
+- `regresskey` - Directory containing the 'golden' reference results
+- `regressinclude` - Include paths for eclcc
+- `regressprocesses` - Number of parallel processes
+
+Step 2: Check out OSS/master, compile, and run the regressions to populate the 'golden' directory. First, load the environment variables:
+
+```batch
+call ecl\regress\setreg.bat
+```
+
+Then run the regressions:
+
+```batch
+cd ecl\regress
+regress.bat -m *.ecl *.eclxml
+```
+
+This will compile all test files using your just-compiled ECLCC and store results in the directory specified by `regresstgt`.
+
+Step 3: Make your changes (or check out your branch), compile, and run again. Update the `regresstgt` environment variable to point to a new directory for your branch results:
+
+```batch
+set regresstgt=d:\regression_mybranch
+regress.bat -m *.ecl *.eclxml
+```
+
+Step 4: Compare the results. If you have Beyond Compare or another diff tool installed, you can create an `rcompare.bat` file (using `rcompare.bat.sample` as a template) to visually compare the two result directories and identify differences.
+
+The Windows regression scripts support parallel execution when `regressprocesses` is set. Individual test files can be run using `regress1.bat` for single-threaded execution or `r1.bat` for basic testing.
 
 ## Debugging the system
 
