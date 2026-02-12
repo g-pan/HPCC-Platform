@@ -178,7 +178,7 @@ differences, commit and issue a pull-request.
 
 On Windows, the process is similar but uses batch files instead of shell scripts:
 
-Step 1: Set up the regression environment variables by creating a `setreg.bat` file in the `ecl/regress` directory. You can copy `setreg.bat.sample` as a template:
+Step 1: Set up the regression environment variables by creating a `setreg.bat` file in the `ecl\regress` directory. You can copy `setreg.bat.sample` as a template:
 
 ```batch
 copy ecl\regress\setreg.bat.sample ecl\regress\setreg.bat
@@ -212,7 +212,13 @@ set regresstgt=d:\regression_mybranch
 regress.bat -m *.ecl *.eclxml
 ```
 
-Step 4: Compare the results. If you have Beyond Compare or another diff tool installed, you can create an `rcompare.bat` file (using `rcompare.bat.sample` as a template) to visually compare the two result directories and identify differences.
+Step 4: Compare the results. If you have Beyond Compare or another diff tool installed, you can create an `rcompare.bat` file (using `rcompare.bat.sample` as a template) and then run it to visually compare the two result directories:
+
+```batch
+call ecl\regress\rcompare.bat
+```
+
+This will open your configured diff tool to compare the results from `regresstgt` against the golden results in `regresskey`, allowing you to identify any differences caused by your changes.
 
 The Windows regression scripts support parallel execution when `regressprocesses` is set. Individual test files can be run using `regress1.bat` for single-threaded execution or `r1.bat` for basic testing.
 
