@@ -7,7 +7,7 @@
 
     <mediaobject>
       <imageobject>
-        <imagedata fileref="images/redswooshWithLogo3.jpg" />
+        <imagedata fileref="images/redswooshWithLogo3.jpg"/>
       </imageobject>
     </mediaobject>
 
@@ -37,26 +37,26 @@
       similarity to actual persons, living or dead, is purely
       coincidental.</para>
 
-      <para></para>
+      <para/>
     </legalnotice>
 
     <xi:include href="common/Version.xml"
                 xpointer="xpointer(//*[@id='FooterInfo'])"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
     <xi:include href="common/Version.xml"
                 xpointer="xpointer(//*[@id='DateVer'])"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
     <corpname>HPCC Systems<superscript>®</superscript></corpname>
 
     <xi:include href="common/Version.xml"
                 xpointer="xpointer(//*[@id='Copyright'])"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
     <mediaobject role="logo">
       <imageobject>
-        <imagedata fileref="images/LN_Rightjustified.jpg" />
+        <imagedata fileref="images/LN_Rightjustified.jpg"/>
       </imageobject>
     </mediaobject>
   </bookinfo>
@@ -140,9 +140,9 @@
       set to <emphasis role="bold">Allow Full</emphasis>, as shown
       below.</para>
 
-      <para><graphic fileref="images/desdl-LDAP.jpg" /></para>
+      <para><graphic fileref="images/desdl-LDAP.jpg"/></para>
 
-      <para></para>
+      <para/>
     </sect1>
 
     <sect1 id="DESDLWorkflowOverview">
@@ -150,14 +150,14 @@
 
       <para>In this tutorial, we will:</para>
 
-      <para></para>
+      <para/>
 
       <itemizedlist>
         <listitem>
           <para>Write an ESDL Service Definition using the editor in the ECL
           IDE.</para>
 
-          <para></para>
+          <para/>
         </listitem>
 
         <listitem>
@@ -174,24 +174,24 @@
           <para>Write the ECL for the business logic of the query, compile it,
           and then publish the query to a Roxie cluster.</para>
 
-          <para></para>
+          <para/>
         </listitem>
 
         <listitem>
           <para>Publish the Dynamic ESDL definition from the ECL IDE.</para>
 
-          <para></para>
+          <para/>
         </listitem>
 
         <listitem>
           <para>Bind the service methods to the Roxie queries in ECLWatch
           using an XML formatted configuration.</para>
 
-          <para></para>
+          <para/>
         </listitem>
       </itemizedlist>
 
-      <para></para>
+      <para/>
     </sect1>
 
     <sect1 id="ESDL_Configuration">
@@ -221,7 +221,7 @@
       DESDL bindings that you’re going to add on any port. Although the
       template binding is set to use port 0, there is no binding created on
       port 0, the template only exists to provide a default configuration.
-      <graphic fileref="images/desdl-Config01.png" /></para>
+      <graphic fileref="images/desdl-Config01.png"/></para>
 
       <para>You can customize the template to suit your needs. For example,
       you can set up LDAP security or logging that will apply to all bindings.
@@ -283,7 +283,7 @@
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-insertFolder.jpg" />
+                  <imagedata fileref="images/desdl-insertFolder.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure></para>
@@ -304,7 +304,7 @@
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-insertFolder2.jpg" />
+                  <imagedata fileref="images/desdl-insertFolder2.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure></para>
@@ -329,7 +329,7 @@
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-insertFile.jpg" />
+                  <imagedata fileref="images/desdl-insertFile.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure></para>
@@ -341,7 +341,7 @@
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-newDESDL.jpg" />
+                  <imagedata fileref="images/desdl-newDESDL.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure></para>
@@ -349,7 +349,7 @@
           <para>Notice that some text has been written for you in the
           window.</para>
 
-          <para></para>
+          <para/>
         </listitem>
       </orderedlist>
 
@@ -380,7 +380,7 @@ ESPresponse AddThisResponse
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-codeInEditor.jpg" />
+                  <imagedata fileref="images/desdl-codeInEditor.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure></para>
@@ -402,7 +402,7 @@ ESPresponse AddThisResponse
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-saveESDLFile.jpg" />
+                  <imagedata fileref="images/desdl-saveESDLFile.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure></para>
@@ -490,7 +490,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="images/desdl-targetRoxie.jpg" />
+                    <imagedata fileref="images/desdl-targetRoxie.jpg"/>
                   </imageobject>
                 </mediaobject>
               </figure></para>
@@ -507,7 +507,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-compileService.jpg" />
+                  <imagedata fileref="images/desdl-compileService.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure>
@@ -522,7 +522,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="images/desdl-compiled.jpg" />
+                    <imagedata fileref="images/desdl-compiled.jpg"/>
                   </imageobject>
                 </mediaobject>
               </figure></para>
@@ -545,7 +545,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="images/desdl-publishQuery.jpg" />
+                    <imagedata fileref="images/desdl-publishQuery.jpg"/>
                   </imageobject>
                 </mediaobject>
               </figure>This publishes the AddThis query to the Roxie.</para>
@@ -582,14 +582,14 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
             Server. Next we will bind the <emphasis>AddThis</emphasis> method
             to the <emphasis>AddThis</emphasis> published query.</para>
 
-            <para></para>
+            <para/>
           </listitem>
 
           <listitem>
             <para>Open ECL Watch in your browser (&lt;your ESP
             ip&gt;:8010)</para>
 
-            <para></para>
+            <para/>
           </listitem>
 
           <listitem>
@@ -601,7 +601,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="images/desdl-ECLWatch1.jpg" />
+                    <imagedata fileref="images/desdl-ECLWatch1.jpg"/>
                   </imageobject>
                 </mediaobject>
               </figure></para>
@@ -618,12 +618,12 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-addBinding.jpg" />
+                  <imagedata fileref="images/desdl-addBinding.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure>
 
-            <para></para>
+            <para/>
           </listitem>
 
           <listitem>
@@ -632,7 +632,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
             drop list and press the <emphasis role="bold">Apply</emphasis>
             button.</para>
 
-            <para></para>
+            <para/>
           </listitem>
 
           <listitem>
@@ -640,7 +640,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
             then expand <emphasis>AddThis</emphasis> by clicking on the
             triangle next to it.</para>
 
-            <para></para>
+            <para/>
           </listitem>
 
           <listitem>
@@ -662,7 +662,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/desdl-methodConfiguration.jpg" />
+                  <imagedata fileref="images/desdl-methodConfiguration.jpg"/>
                 </imageobject>
               </mediaobject>
             </figure>
@@ -709,7 +709,7 @@ OUTPUT(ds_out, NAMED('AddThisResponse')); </programlisting>
 
   <xi:include href="HPCCClientTools/CT_Mods/CT_ESDL_CLI.xml"
               xpointer="xpointer(//*[@id='ESDL_CLI'])"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
   <!-- Moved the ESDL Language Reference to a separate book -->
 </book>

@@ -56,6 +56,9 @@
         <imagedata fileref="images/LN_Rightjustified.jpg" />
       </imageobject>
     </mediaobject>
+
+  <xi:include href="../DynamicESDL/DESDL-Mods/ESDL-Manifest.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
   </bookinfo>
 
   <xi:include href="HPCCClientTools/CT_Mods/CT_Overview_withoutIDE.xml"
